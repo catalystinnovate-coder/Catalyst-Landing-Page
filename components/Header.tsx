@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const LogoIcon: React.FC = () => (
@@ -34,7 +33,6 @@ const LogoIcon: React.FC = () => (
   </svg>
 );
 
-
 const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-50 bg-slate-900/50 backdrop-blur-sm">
@@ -44,22 +42,25 @@ const Header: React.FC = () => {
             <a href="#" className="flex items-center space-x-2">
               <LogoIcon />
               <span className="text-xl font-bold text-white tracking-wider">
-                Catalyst
+                Catalyst Innovation
               </span>
             </a>
           </div>
           <nav className="hidden md:flex md:items-center md:space-x-6">
-            <a href="#" className="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300">
-              Features
+            <a href="#work" className="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300">
+              Work
             </a>
-            <a href="#" className="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300">
-              Solutions
+            <a href="#services" className="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300">
+              Services
             </a>
-            <a href="#" className="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300">
-              Pricing
+            <a href="#results" className="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300">
+              Results
             </a>
-            <a href="#" className="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300">
-              About Us
+            <a
+              href="mailto:info@thecatalystinnovation.com"
+              className="text-sm font-medium text-slate-300 hover:text-white transition-colors duration-300"
+            >
+              Contact
             </a>
           </nav>
         </div>
