@@ -180,6 +180,232 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;}
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.2);}
 .footer-geo{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.15);}
+
+/* ═══════════════════════════════
+   MOBILE STYLES — max-width 768px
+═══════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav {
+    padding: 18px 24px;
+  }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px; height: 44px;
+    cursor: pointer;
+    gap: 6px;
+    z-index: 200;
+    position: relative;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); background:#fff; }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); background:#fff; }
+
+  /* FULLSCREEN OVERLAY NAV */
+  .mobile-nav-overlay {
+    position: fixed; inset: 0; z-index: 150;
+    background: var(--dark);
+    display: flex; flex-direction: column;
+    align-items: flex-start; justify-content: center;
+    padding: 0 40px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-nav-overlay.open {
+    opacity: 1; pointer-events: all;
+  }
+  .mobile-nav-overlay::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--cobalt), var(--sky), var(--coral));
+  }
+  .mobile-nav-links {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 8px;
+    width: 100%;
+  }
+  .mobile-nav-links li {
+    overflow: hidden;
+  }
+  .mobile-nav-links a {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 56px; line-height: 1.1;
+    color: rgba(255,255,255,0.15);
+    text-decoration: none;
+    display: block;
+    transition: color 0.25s;
+    transform: translateY(40px);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), opacity 0.45s, color 0.2s;
+  }
+  .mobile-nav-overlay.open .mobile-nav-links a {
+    transform: translateY(0); opacity: 1; color: rgba(255,255,255,0.9);
+  }
+  .mobile-nav-links li:nth-child(1) a { transition-delay: 0.05s; }
+  .mobile-nav-links li:nth-child(2) a { transition-delay: 0.10s; }
+  .mobile-nav-links li:nth-child(3) a { transition-delay: 0.15s; }
+  .mobile-nav-links li:nth-child(4) a { transition-delay: 0.20s; }
+  .mobile-nav-links a:hover { color: var(--cobalt); }
+  .mobile-nav-cta {
+    margin-top: 40px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--cobalt), var(--sky));
+    padding: 14px 32px; text-decoration: none;
+    border-radius: 100px; display: inline-block;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.4s 0.3s, transform 0.4s 0.3s cubic-bezier(0.22,1,0.36,1);
+  }
+  .mobile-nav-overlay.open .mobile-nav-cta {
+    opacity: 1; transform: translateY(0);
+  }
+  .mobile-nav-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--cobalt); margin-bottom: 32px;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.4s 0.02s, transform 0.4s 0.02s;
+  }
+  .mobile-nav-overlay.open .mobile-nav-tag {
+    opacity: 1; transform: translateY(0);
+  }
+
+  /* HERO */
+  .hero { padding-top: 70px; min-height: 100svh; }
+  .hero-inner { padding: 0 24px; }
+  .hero-eyebrow { font-size: 9px; letter-spacing: 0.2em; margin-bottom: 20px; gap: 10px; }
+  .hero-eyebrow::before, .hero-eyebrow::after { width: 28px; }
+  #word-ghost {
+    font-size: clamp(80px, 22vw, 120px);
+    white-space: nowrap;
+  }
+  .hero-sub {
+    font-size: 15px; margin-top: 24px; margin-bottom: 32px;
+    max-width: 100%;
+  }
+  .hero-actions { flex-direction: column; align-items: center; gap: 12px; }
+  .btn-primary { width: 100%; max-width: 280px; text-align: center; }
+  .btn-ghost { justify-content: center; }
+
+  /* MARQUEE */
+  .marquee-inner span { padding: 0 28px; font-size: 11px; }
+
+  /* STATEMENT */
+  .statement {
+    grid-template-columns: 1fr;
+    gap: 40px; padding: 80px 24px;
+  }
+  .statement-headline { font-size: clamp(36px, 9vw, 52px); }
+
+  /* SERVICES — horizontal swipe */
+  .services { padding: 80px 0; }
+  .services-header {
+    flex-direction: column; gap: 16px; align-items: flex-start;
+    padding: 0 24px; margin-bottom: 32px;
+  }
+  .services-title { font-size: clamp(36px, 9vw, 52px); }
+  .services-sub { text-align: left; max-width: 100%; }
+  .services-grid {
+    grid-template-columns: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding: 0 24px 24px;
+    scrollbar-width: none;
+  }
+  .services-grid::-webkit-scrollbar { display: none; }
+  .service-card {
+    min-width: 78vw;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+  /* swipe indicator dots */
+  .swipe-hint {
+    display: flex; justify-content: center; gap: 6px;
+    margin-top: 20px; padding-bottom: 8px;
+  }
+  .swipe-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transition: background 0.3s;
+  }
+  .swipe-dot.active { background: var(--cobalt); }
+
+  /* PEOPLE */
+  .people {
+    grid-template-columns: 1fr;
+    gap: 48px; padding: 80px 24px;
+  }
+  .people-content { padding-right: 0; }
+  .people-headline { font-size: clamp(36px, 9vw, 52px); }
+  .people-imgs {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
+  .people-imgs::before { display: none; }
+  .portrait-wrap {
+    min-width: 60vw;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  /* STATS */
+  .stats-banner { padding: 80px 24px; }
+  .stats-inner { grid-template-columns: 1fr; gap: 48px; }
+  .stat-num { font-size: 64px; }
+
+  /* WORK */
+  .work { padding: 80px 24px; }
+  .work-grid { grid-template-columns: 1fr; gap: 16px; }
+  .work-title { font-size: clamp(36px, 9vw, 52px); }
+
+  /* ACCENT STRIP */
+  .accent-strip {
+    flex-direction: column; gap: 32px;
+    padding: 60px 24px; text-align: center;
+  }
+  .accent-strip-left h3 { font-size: clamp(32px, 8vw, 48px); }
+
+  /* FOOTER */
+  footer { padding: 60px 24px 40px; }
+  footer::before { margin: -60px -24px 60px -24px; }
+  .footer-top { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* hide hamburger on desktop */
+@media (min-width: 769px) {
+  .nav-hamburger { display: none; }
+  .mobile-nav-overlay { display: none; }
+}
+
 </style>
 </head>
 <body>
@@ -191,7 +417,23 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
     <li><a href="#">Work</a></li><li><a href="#">Insights</a></li>
   </ul>
   <a href="#" class="nav-cta">Start the Conversation</a>
+  <!-- mobile hamburger -->
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- fullscreen mobile overlay -->
+<div class="mobile-nav-overlay" id="mobile-nav">
+  <div class="mobile-nav-tag">Catalyst Innovation Solutions</div>
+  <ul class="mobile-nav-links">
+    <li><a href="#" onclick="closeMobileNav()">Services</a></li>
+    <li><a href="#" onclick="closeMobileNav()">About</a></li>
+    <li><a href="#" onclick="closeMobileNav()">Work</a></li>
+    <li><a href="#" onclick="closeMobileNav()">Insights</a></li>
+  </ul>
+  <a href="#" class="mobile-nav-cta">Start the Conversation</a>
+</div>
 
 <!-- HERO — full bleed -->
 <section class="hero">
@@ -245,6 +487,12 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
     <div class="service-card"><div class="service-num">01</div><div class="service-name">BUILD</div><div class="service-label">Organisational Design & Operations</div><p class="service-desc">The internal engine. We build the structure that makes sustainable growth possible — for founders drowning in chaos who need to run like a real company.</p><ul class="service-list"><li>Org structure and team design</li><li>Hiring frameworks and onboarding</li><li>SOPs and operational protocols</li><li>Scaling from founder-led to structured</li></ul></div>
     <div class="service-card"><div class="service-num">02</div><div class="service-name">LEAD</div><div class="service-label">Leadership & Culture</div><p class="service-desc">The human layer. We build people systems and culture that make everything else work — for leaders who have the team but not the systems to lead them at scale.</p><ul class="service-list"><li>Management frameworks</li><li>Leadership development programs</li><li>Accountability and performance systems</li><li>Executive advisory</li></ul></div>
     <div class="service-card"><div class="service-num">03</div><div class="service-name">GROW</div><div class="service-label">Marketing & Growth Strategy</div><p class="service-desc">The external engine. Once the foundation is solid, we build visibility, leads, and market presence — for companies ready to amplify what's working inside.</p><ul class="service-list"><li>Go-to-market strategy</li><li>Brand positioning and messaging</li><li>Content and distribution systems</li><li>Growth architecture</li></ul></div>
+  </div>
+  <!-- mobile swipe dots -->
+  <div class="swipe-hint" id="service-dots">
+    <div class="swipe-dot active"></div>
+    <div class="swipe-dot"></div>
+    <div class="swipe-dot"></div>
   </div>
 </section>
 
@@ -559,6 +807,39 @@ const observer=new IntersectionObserver((entries)=>{
 },{threshold:0.3});
 const banner=document.querySelector('.stats-banner');
 if(banner) observer.observe(banner);
+
+/* ── MOBILE NAV ── */
+function closeMobileNav() {
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('hamburger').addEventListener('click', function() {
+  const overlay = document.getElementById('mobile-nav');
+  const isOpen = overlay.classList.contains('open');
+  if (isOpen) {
+    closeMobileNav();
+  } else {
+    overlay.classList.add('open');
+    this.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+});
+
+/* ── SERVICE CARD SWIPE DOTS ── */
+(function() {
+  const grid = document.querySelector('.services-grid');
+  const dots = document.querySelectorAll('.swipe-dot');
+  if (!grid || !dots.length) return;
+  grid.addEventListener('scroll', () => {
+    const cards = grid.querySelectorAll('.service-card');
+    const scrollLeft = grid.scrollLeft;
+    const cardWidth = cards[0] ? cards[0].offsetWidth + 16 : 0;
+    const active = Math.round(scrollLeft / cardWidth);
+    dots.forEach((d, i) => d.classList.toggle('active', i === active));
+  }, { passive: true });
+})();
+
 </script>
 </body>
 </html>
