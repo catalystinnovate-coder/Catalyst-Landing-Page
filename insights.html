@@ -7,28 +7,58 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'Aburo';src:url('fonts/Aburo/Aburo-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Aburo';src:url('fonts/Aburo/Aburo-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Glacial Indifference';src:url('fonts/glacial-indifference/GlacialIndifference-Regular.otf') format('opentype');font-weight:400;font-display:swap}
+@font-face{font-family:'Glacial Indifference';src:url('fonts/glacial-indifference/GlacialIndifference-Bold.otf') format('opentype');font-weight:700;font-display:swap}
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --cobalt:#0077FF;--sky:#00C3FF;--coral:#FE7235;--amber:#FEA735;
+  --cobalt:#0077FE;--sky:#08C3FF;--coral:#FE7234;--amber:#FEA835;
   --white:#fff;--cream:#F8F7F4;--dark:#0d0d14;--text:#0d0d14;--muted:#6b7280;
   --r:16px;--r-lg:24px;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;padding-top:96px}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:rgba(248,247,244,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.06);}
-.nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);text-decoration:none}
-.nav-logo span{background:linear-gradient(90deg,var(--cobalt),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-back{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s}
-.nav-back:hover{color:var(--cobalt)}
-.nav-back::before{content:'←';color:var(--cobalt)}
-.nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);background:linear-gradient(135deg,var(--cobalt),var(--sky));padding:10px 24px;text-decoration:none;border-radius:100px;transition:opacity 0.2s}
+/* ── FLOATING NAV ── */
+nav{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);
+  width:calc(100% - 48px);max-width:1200px;z-index:200;
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;height:64px;padding:0 2rem;
+  background:rgba(14,13,13,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);border-radius:12px;
+}
+.nav-left{display:flex;align-items:center;gap:6px}
+.nav-center{display:flex;align-items:center;justify-content:center}
+.nav-right{display:flex;align-items:center;gap:20px;justify-content:flex-end}
+.nav-logo{font-family:'Aburo',sans-serif;font-size:18px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:0.08em}
+.logo-dot{color:#0077FE}
+.nav-link{
+  font-family:'Glacial Indifference',sans-serif;font-size:10.5px;font-weight:400;
+  letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);
+  text-decoration:none;transition:color 0.2s;position:relative;padding-bottom:2px;
+}
+.nav-link:hover{color:#fff}
+.nav-link::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;
+  height:1px;background:#0077FE;transform:scaleX(0);
+  transition:transform 0.2s;transform-origin:left;
+}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.nav-link.active{color:#0077FE}
+.nav-sep{color:rgba(255,255,255,0.18);font-size:10px;user-select:none;margin:0 2px}
+.nav-cta{
+  font-family:'Glacial Indifference',sans-serif;font-size:10.5px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:#0E0D0D;background:#0077FE;padding:9px 18px;
+  border-radius:100px;text-decoration:none;transition:opacity 0.2s;white-space:nowrap;
+}
 .nav-cta:hover{opacity:0.85}
 
 /* ── HERO ── */
 .insights-hero{
-  padding:160px 80px 100px;background:var(--white);
+  padding:64px 80px 100px;background:var(--white);
   position:relative;overflow:hidden;
 }
 .insights-hero::before{
@@ -260,8 +290,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 /* mobile */
 @media(max-width:768px){
-  nav{padding:18px 24px;}
-  .insights-hero{padding:110px 24px 60px;}
+  nav{width:calc(100% - 24px);top:12px;padding:0 1.25rem;}
+  .insights-hero{padding:48px 24px 60px;}
   .filter-bar{padding:24px;}
   .featured-wrap{padding:40px 24px 0;}
   .featured-card{grid-template-columns:1fr;}
@@ -277,9 +307,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">CATALYST<span>.</span></a>
-  <a href="index.html" class="nav-back">Back to Home</a>
-  <a href="index.html" class="nav-cta">Start the Conversation</a>
+  <div class="nav-left">
+    <a href="build.html" class="nav-link">Build</a>
+    <span class="nav-sep">·</span>
+    <a href="lead.html" class="nav-link">Lead</a>
+    <span class="nav-sep">·</span>
+    <a href="grow.html" class="nav-link">Grow</a>
+  </div>
+  <div class="nav-center">
+    <a href="index.html" class="nav-logo">CATALYST<span class="logo-dot">.</span></a>
+  </div>
+  <div class="nav-right">
+    <a href="work.html" class="nav-link">Work</a>
+    <a href="insights.html" class="nav-link active">Insights</a>
+    <a href="#contact" class="nav-cta">Start a conversation</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -455,7 +497,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 </div>
 
 <!-- NEWSLETTER -->
-<section class="newsletter">
+<section class="newsletter" id="contact">
   <div class="newsletter-inner">
     <div class="newsletter-tag">Stay Sharp</div>
     <h2>Thinking delivered<br>to your <span>inbox.</span></h2>

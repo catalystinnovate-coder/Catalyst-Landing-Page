@@ -19,15 +19,16 @@
   --glass-bg:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.08);
 }
 html{scroll-behavior:smooth}
-body{font-family:'Glacial Indifference',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6}
+body{font-family:'Glacial Indifference',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6;padding-top:96px}
 
-/* ── NAV ── */
+/* ── FLOATING NAV ── */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);
+  width:calc(100% - 48px);max-width:1200px;z-index:200;
   display:grid;grid-template-columns:1fr auto 1fr;
-  align-items:center;height:72px;padding:0 60px;
-  background:rgba(14,13,13,0.88);backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,0.06);
+  align-items:center;height:64px;padding:0 2rem;
+  background:rgba(14,13,13,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);border-radius:12px;
 }
 .nav-left{display:flex;align-items:center;gap:6px}
 .nav-center{display:flex;align-items:center;justify-content:center}
@@ -58,9 +59,9 @@ nav{
 
 /* ── HERO ── */
 .hero{
-  min-height:100vh;display:flex;align-items:center;
+  min-height:calc(100vh - 96px);display:flex;align-items:center;
   position:relative;overflow:hidden;background:var(--bg);
-  padding:140px 80px 100px;
+  padding:60px 80px 80px;
 }
 .orb{position:absolute;border-radius:50%;pointer-events:none}
 .orb-1{top:-20%;left:-10%;width:800px;height:800px;background:radial-gradient(ellipse,rgba(254,114,52,0.10) 0%,transparent 65%)}
@@ -308,7 +309,7 @@ footer{
 
 /* ── MOBILE ── */
 @media(max-width:900px){
-  nav{padding:0 24px}
+  nav{width:calc(100% - 24px);top:12px;padding:0 1.25rem}
   .nav-left .nav-link:last-child,.nav-left .nav-sep:last-child{display:none}
   .hero{padding:110px 28px 72px}
   .what-section,.approach-section,.capabilities-section,.who-section,.why-section,.related-section{padding:80px 28px}
@@ -340,8 +341,8 @@ footer{
   </div>
   <div class="nav-right">
     <a href="work.html" class="nav-link">Work</a>
-    <a href="index.html" class="nav-link">About</a>
-    <a href="https://calendly.com/catalystinnovate/30min" class="nav-cta" target="_blank" rel="noopener">Start a conversation &#8594;</a>
+    <a href="insights.html" class="nav-link">Insights</a>
+    <a href="#contact" class="nav-cta">Start a conversation</a>
   </div>
 </nav>
 
@@ -564,7 +565,7 @@ footer{
 <div class="spectrum-bar"></div>
 
 <!-- CTA -->
-<section class="cta-section">
+<section class="cta-section" id="contact">
   <div class="cta-inner">
     <div class="section-tag" style="justify-content:center"><span class="dot-sm"></span> Get Started</div>
     <h2>Let's build the structure your business needs.</h2>
