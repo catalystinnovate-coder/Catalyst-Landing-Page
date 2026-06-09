@@ -19,7 +19,7 @@
   --glass-bg:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.08);
 }
 html{scroll-behavior:smooth;background:#0E0D0D}
-body{font-family:'Glacial Indifference',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6;padding-top:96px}
+body{font-family:'Glacial Indifference',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6;padding-top:88px}
 
 /* ── NAV ── */
 .site-nav{
@@ -176,6 +176,27 @@ body{font-family:'Glacial Indifference',sans-serif;background:var(--bg);color:va
   z-index:998;opacity:0;pointer-events:none;transition:opacity 0.2s ease;
 }
 #nav-overlay.active{opacity:1;pointer-events:auto}
+/* ── WORK TRAY (thumbnails) ── */
+.dropdown-work{width:920px}
+.dropdown-work .dc-card{padding:0;overflow:hidden}
+.dropdown-work .dc-grid{margin-bottom:20px}
+.dc-thumb-wrap{overflow:hidden;height:160px;display:block;border-radius:10px 10px 0 0}
+.dc-thumb{width:100%;height:160px;object-fit:cover;display:block;border-radius:10px 10px 0 0;transition:transform 0.4s ease}
+.dc-card:hover .dc-thumb{transform:scale(1.08)}
+.dc-card-body{padding:14px 20px 20px}
+/* ── INSIGHTS TRAY (horizontal editorial) ── */
+.dropdown-ins{width:920px}
+.di-list{margin-bottom:20px}
+.di-card{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid #f0f0f0;text-decoration:none}
+.di-card:last-child{border-bottom:none}
+.di-thumb-wrap{width:120px;min-width:120px;height:100px;overflow:hidden;border-radius:8px;flex-shrink:0}
+.di-thumb{width:100%;height:100%;object-fit:cover;display:block;transition:filter 0.2s}
+.di-card:hover .di-thumb{filter:brightness(1.1)}
+.di-content{flex:1;padding-top:2px}
+.di-label{font-family:'Glacial Indifference',sans-serif;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;font-weight:700;margin-bottom:6px;display:block}
+.di-title{font-family:'Glacial Indifference',sans-serif;font-size:0.95rem;font-weight:600;color:#0E0D0D;margin:0 0 8px;line-height:1.3;transition:color 0.15s}
+.di-card:hover .di-title{color:#0077FE}
+.di-desc{font-family:'Glacial Indifference',sans-serif;font-size:0.82rem;color:#888;line-height:1.55;margin:0}
 
 /* ── HERO ── */
 .hero{
@@ -449,7 +470,7 @@ footer{
 <body>
 
 <nav class="site-nav">
-  <a href="/index.html" class="nav-logo"><img src="/logo-black.svg" alt="Catalyst" style="height:32px;width:auto;"></a>
+  <a href="/index.html" class="nav-logo"><img src="/logo-black.svg" alt="Catalyst" style="height:40px;width:auto;"></a>
   <ul class="nav-links">
     <li class="has-dropdown lnk-services">
       <a href="/#services" class="nav-link active">Services <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
@@ -500,22 +521,31 @@ footer{
     <li class="sep" aria-hidden="true">·</li>
     <li class="has-dropdown lnk-work">
       <a href="/work" class="nav-link">Work <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
-      <div class="dropdown dropdown-cards">
+            <div class="dropdown dropdown-work">
         <div class="dc-grid">
-          <a href="/work" class="dc-card">
-            <span class="dc-label dc-label-grow">GROW</span>
-            <div class="dc-title">Grow Church</div>
-            <p class="dc-desc">Brand identity and growth strategy for a fast-scaling faith community</p>
+          <a href="/work.html" class="dc-card">
+            <div class="dc-thumb-wrap"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=400&q=80" class="dc-thumb" alt="Grow Church"></div>
+            <div class="dc-card-body">
+              <span class="dc-label dc-label-grow">GROW</span>
+              <div class="dc-title">Grow Church</div>
+              <p class="dc-desc">Brand identity and growth strategy for a fast-scaling faith community</p>
+            </div>
           </a>
-          <a href="/work" class="dc-card">
-            <span class="dc-label dc-label-build">BUILD</span>
-            <div class="dc-title">FVLN</div>
-            <p class="dc-desc">Go-to-market positioning and brand strategy for a luxury property brand</p>
+          <a href="/work.html" class="dc-card">
+            <div class="dc-thumb-wrap"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&q=80" class="dc-thumb" alt="FVLN"></div>
+            <div class="dc-card-body">
+              <span class="dc-label dc-label-build">BUILD</span>
+              <div class="dc-title">FVLN</div>
+              <p class="dc-desc">Go-to-market positioning and brand strategy for a luxury property brand</p>
+            </div>
           </a>
-          <a href="/work" class="dc-card">
-            <span class="dc-label dc-label-build">BUILD</span>
-            <div class="dc-title">New Life Church</div>
-            <p class="dc-desc">Organisational design and communications overhaul</p>
+          <a href="/work.html" class="dc-card">
+            <div class="dc-thumb-wrap"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" class="dc-thumb" alt="New Life Church"></div>
+            <div class="dc-card-body">
+              <span class="dc-label dc-label-build">BUILD</span>
+              <div class="dc-title">New Life Church</div>
+              <p class="dc-desc">Organisational design and communications overhaul</p>
+            </div>
           </a>
         </div>
         <div class="dc-footer">
@@ -526,22 +556,31 @@ footer{
     <li class="sep" aria-hidden="true">·</li>
     <li class="has-dropdown lnk-ins">
       <a href="/insights" class="nav-link">Insights <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
-      <div class="dropdown dropdown-cards">
-        <div class="dc-grid">
-          <a href="/insights" class="dc-card">
-            <span class="dc-label dc-label-lead">LEAD</span>
-            <div class="dc-title">Why most founder-led businesses stall at the same point</div>
-            <p class="dc-desc">The pattern shows up at the same revenue mark, in the same way, for the same reason.</p>
+            <div class="dropdown dropdown-ins">
+        <div class="di-list">
+          <a href="/insights" class="di-card">
+            <div class="di-thumb-wrap"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&q=80" class="di-thumb" alt=""></div>
+            <div class="di-content">
+              <span class="di-label" style="color:#FE7234">LEAD</span>
+              <div class="di-title">Why most founder-led businesses stall at the same point</div>
+              <p class="di-desc">The pattern shows up at the same revenue mark, in the same way, for the same reason.</p>
+            </div>
           </a>
-          <a href="/insights" class="dc-card">
-            <span class="dc-label dc-label-build">BUILD</span>
-            <div class="dc-title">The structure problem hiding behind every growth plateau</div>
-            <p class="dc-desc">Growth doesn&#8217;t stall because the market disappears. It stalls because the business can&#8217;t hold the weight.</p>
+          <a href="/insights" class="di-card">
+            <div class="di-thumb-wrap"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" class="di-thumb" alt=""></div>
+            <div class="di-content">
+              <span class="di-label" style="color:#0077FE">BUILD</span>
+              <div class="di-title">The structure problem hiding behind every growth plateau</div>
+              <p class="di-desc">Growth doesn&#8217;t stall because the market disappears. It stalls because the business can&#8217;t hold the weight.</p>
+            </div>
           </a>
-          <a href="/insights" class="dc-card">
-            <span class="dc-label dc-label-grow">GROW</span>
-            <div class="dc-title">Why positioning work fails without operational depth behind it</div>
-            <p class="dc-desc">You can&#8217;t market your way out of an internal problem.</p>
+          <a href="/insights" class="di-card">
+            <div class="di-thumb-wrap"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&q=80" class="di-thumb" alt=""></div>
+            <div class="di-content">
+              <span class="di-label" style="color:#FEA835">GROW</span>
+              <div class="di-title">Why positioning work fails without operational depth behind it</div>
+              <p class="di-desc">You can&#8217;t market your way out of an internal problem.</p>
+            </div>
           </a>
         </div>
         <div class="dc-footer">
