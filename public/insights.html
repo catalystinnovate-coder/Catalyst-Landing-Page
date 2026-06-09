@@ -16,6 +16,10 @@
   --cobalt:#0077FE;--sky:#08C3FF;--coral:#FE7234;--amber:#FEA835;
   --white:#fff;--cream:#F8F7F4;--dark:#0d0d14;--text:#0d0d14;--muted:#6b7280;
   --r:16px;--r-lg:24px;
+
+  --ease-smooth:cubic-bezier(0.4,0,0.2,1);
+  --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+  --space-xs:0.5rem;--space-sm:1rem;--space-md:2rem;--space-lg:4rem;--space-xl:8rem;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;padding-top:88px}
@@ -65,7 +69,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
   box-shadow:0 20px 60px rgba(0,0,0,0.15);
   padding:40px;
   opacity:0;pointer-events:none;
-  transition:opacity 0.25s ease-out,transform 0.25s ease-out;
+  transition:opacity 0.2s ease,transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
   z-index:1010;
   font-family:'Glacial Indifference',sans-serif;
 }
@@ -476,7 +480,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
   50%{transform:translate(-6px,8px)}
   75%{transform:translate(10px,4px)}
 }
-.hero-blob{position:absolute;filter:blur(60px);pointer-events:none;z-index:0;}
+.hero-blob{position:absolute;filter:blur(60px);pointer-events:none;z-index:0;will-change:transform;}
 .blob-1{width:500px;height:500px;top:-80px;left:-80px;opacity:0.45;
   background:radial-gradient(circle,#0077FE 0%,transparent 70%);
   animation:blob1 28s ease-in-out infinite;}
@@ -492,7 +496,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
 .blob-5{width:200px;height:200px;top:40%;right:20%;opacity:0.4;
   background:radial-gradient(circle,#0077FE 0%,transparent 70%);
   animation:blob5 35s ease-in-out infinite;}
-.hero-orb{position:absolute;border-radius:50%;
+.hero-orb{position:absolute;border-radius:50%;will-change:transform;
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border:1px solid rgba(255,255,255,0.15);
   background:rgba(255,255,255,0.04);
@@ -500,6 +504,16 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
 .orb-1{width:120px;height:120px;top:22%;right:18%;animation:float-orb 20s ease-in-out infinite;}
 .orb-2{width:80px;height:80px;bottom:22%;left:12%;animation:float-orb 25s ease-in-out infinite reverse;}
 .orb-3{width:60px;height:60px;top:58%;right:32%;animation:float-orb 18s ease-in-out infinite;animation-delay:5s;}
+
+/* ── SPECTRUM BAR SHIMMER ── */
+.spectrum-bar{position:relative;overflow:hidden}
+.spectrum-bar::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.55) 50%,transparent 100%);
+  transform:translateX(-100%);
+  animation:spectrumShimmer 4s ease-in-out infinite;
+}
+@keyframes spectrumShimmer{0%,100%{transform:translateX(-100%)}60%{transform:translateX(100%)}}
 </style>
 </head>
 <body>
@@ -559,7 +573,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
             <div class="dropdown dropdown-work">
         <div class="dc-grid">
           <a href="/work.html" class="dc-card">
-            <div class="dc-thumb-wrap"><img src="/crowd-at-music-concert-in-purple-light-2026-01-09-10-14-00-utc.jpg" class="dc-thumb" alt="Grow Church"></div>
+            <div class="dc-thumb-wrap"><img loading="lazy" src="/crowd-at-music-concert-in-purple-light-2026-01-09-10-14-00-utc.jpg" class="dc-thumb" alt="Grow Church"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-grow">GROW</span>
               <div class="dc-title">Grow Church</div>
@@ -567,7 +581,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
             </div>
           </a>
           <a href="/work.html" class="dc-card">
-            <div class="dc-thumb-wrap"><img src="/business-meeting-and-financial-analysis-in-office-2026-01-07-00-49-57-utc.jpg" class="dc-thumb" alt="FVLN"></div>
+            <div class="dc-thumb-wrap"><img loading="lazy" src="/business-meeting-and-financial-analysis-in-office-2026-01-07-00-49-57-utc.jpg" class="dc-thumb" alt="FVLN"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-build">BUILD</span>
               <div class="dc-title">FVLN</div>
@@ -575,7 +589,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
             </div>
           </a>
           <a href="/work.html" class="dc-card">
-            <div class="dc-thumb-wrap"><img src="/crowds-the-audience-at-a-concert-of-an-oratorium-2026-01-06-08-59-53-utc.jpg" class="dc-thumb" alt="New Life Church"></div>
+            <div class="dc-thumb-wrap"><img loading="lazy" src="/crowds-the-audience-at-a-concert-of-an-oratorium-2026-01-06-08-59-53-utc.jpg" class="dc-thumb" alt="New Life Church"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-build">BUILD</span>
               <div class="dc-title">New Life Church</div>
@@ -594,7 +608,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
             <div class="dropdown dropdown-ins">
         <div class="di-list">
           <a href="/insights" class="di-card">
-            <div class="di-thumb-wrap"><img src="/kind-leader-executive-manager-share-and-discuss-bu-2026-01-05-23-25-07-utc.jpg" class="di-thumb" alt=""></div>
+            <div class="di-thumb-wrap"><img loading="lazy" src="/kind-leader-executive-manager-share-and-discuss-bu-2026-01-05-23-25-07-utc.jpg" class="di-thumb" alt=""></div>
             <div class="di-content">
               <span class="di-label" style="color:#FE7234">LEAD</span>
               <div class="di-title">Why most founder-led businesses stall at the same point</div>
@@ -602,7 +616,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
             </div>
           </a>
           <a href="/insights" class="di-card">
-            <div class="di-thumb-wrap"><img src="/top-view-of-table-with-financial-papers-and-calcul-2026-01-08-22-39-45-utc.jpg" class="di-thumb" alt=""></div>
+            <div class="di-thumb-wrap"><img loading="lazy" src="/top-view-of-table-with-financial-papers-and-calcul-2026-01-08-22-39-45-utc.jpg" class="di-thumb" alt=""></div>
             <div class="di-content">
               <span class="di-label" style="color:#0077FE">BUILD</span>
               <div class="di-title">The structure problem hiding behind every growth plateau</div>
@@ -610,7 +624,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
             </div>
           </a>
           <a href="/insights" class="di-card">
-            <div class="di-thumb-wrap"><img src="/business-people-meeting-using-laptop-computer-calc-2026-01-07-00-50-24-utc.jpg" class="di-thumb" alt=""></div>
+            <div class="di-thumb-wrap"><img loading="lazy" src="/business-people-meeting-using-laptop-computer-calc-2026-01-07-00-50-24-utc.jpg" class="di-thumb" alt=""></div>
             <div class="di-content">
               <span class="di-label" style="color:#FEA835">GROW</span>
               <div class="di-title">Why positioning work fails without operational depth behind it</div>
@@ -1133,6 +1147,21 @@ function subscribeNewsletter() {
     ov.classList.remove('active');
   });
 })();
+
+/* ── ORB PARALLAX ── */
+(function(){
+  var orb1=document.querySelector('.orb-1');
+  var orb2=document.querySelector('.orb-2');
+  var orb3=document.querySelector('.orb-3');
+  if(!orb1)return;
+  window.addEventListener('scroll',function(){
+    var s=window.scrollY;
+    if(orb1)orb1.style.transform='translate(0,'+s*0.15+'px)';
+    if(orb2)orb2.style.transform='translate(0,'+s*0.25+'px)';
+    if(orb3)orb3.style.transform='translate(0,'+s*0.1+'px)';
+  },{passive:true});
+})();
+
 </script>
 </body>
 </html>

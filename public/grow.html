@@ -17,6 +17,10 @@
   --cobalt:#0077FE;--sky:#08C3FF;--coral:#FE7234;--amber:#FEA835;
   --parchment:#FEF6F0;--obsidian:#2A2828;--bg:#0E0D0D;--white:#fff;
   --glass-bg:rgba(255,255,255,0.03);--glass-border:rgba(255,255,255,0.08);
+
+  --ease-smooth:cubic-bezier(0.4,0,0.2,1);
+  --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+  --space-xs:0.5rem;--space-sm:1rem;--space-md:2rem;--space-lg:4rem;--space-xl:8rem;
 }
 html{scroll-behavior:smooth;background:#0E0D0D}
 body{font-family:'Glacial Indifference',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6;padding-top:88px}
@@ -66,7 +70,7 @@ body{font-family:'Glacial Indifference',sans-serif;background:var(--bg);color:va
   box-shadow:0 20px 60px rgba(0,0,0,0.15);
   padding:40px;
   opacity:0;pointer-events:none;
-  transition:opacity 0.25s ease-out,transform 0.25s ease-out;
+  transition:opacity 0.2s ease,transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
   z-index:1010;
   font-family:'Glacial Indifference',sans-serif;
 }
@@ -204,7 +208,7 @@ body{font-family:'Glacial Indifference',sans-serif;background:var(--bg);color:va
   position:relative;overflow:hidden;background:var(--bg);
   padding:60px 80px 80px;
 }
-.orb{position:absolute;border-radius:50%;pointer-events:none}
+.orb{position:absolute;border-radius:50%;pointer-events:none;will-change:transform}
 .orb-1{top:-15%;left:-8%;width:800px;height:800px;background:radial-gradient(ellipse,rgba(0,119,254,0.16) 0%,transparent 65%)}
 .orb-2{top:20%;right:-12%;width:700px;height:700px;background:radial-gradient(ellipse,rgba(8,195,255,0.10) 0%,transparent 65%)}
 .hero-inner{position:relative;z-index:2;max-width:860px}
@@ -436,7 +440,7 @@ footer{
 .footer-copy{font-size:11px;color:rgba(255,255,255,0.18)}
 
 /* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s cubic-bezier(0.22,1,0.36,1),transform 0.8s cubic-bezier(0.22,1,0.36,1)}
+.reveal{opacity:0;transform:translateY(28px);will-change:transform;transition:opacity 0.8s cubic-bezier(0.22,1,0.36,1),transform 0.8s cubic-bezier(0.22,1,0.36,1)}
 .reveal.vis{opacity:1;transform:translateY(0)}
 .reveal-d1{transition-delay:0.08s}
 .reveal-d2{transition-delay:0.16s}
@@ -461,6 +465,27 @@ footer{
 }
 @media(max-width:540px){
   .cap-grid{grid-template-columns:1fr}
+}
+
+/* ── SPECTRUM BAR SHIMMER ── */
+.spectrum-bar{position:relative;overflow:hidden}
+.spectrum-bar::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.55) 50%,transparent 100%);
+  transform:translateX(-100%);
+  animation:spectrumShimmer 4s ease-in-out infinite;
+}
+@keyframes spectrumShimmer{0%,100%{transform:translateX(-100%)}60%{transform:translateX(100%)}}
+
+/* ── HERO BG WORD ── */
+.hero-bg-word{
+  position:absolute;right:-60px;bottom:-40px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(160px,18vw,260px);
+  font-weight:700;line-height:1;
+  color:rgba(255,255,255,0.045);
+  pointer-events:none;z-index:1;user-select:none;
+  will-change:transform;
 }
 </style>
 </head>
@@ -521,7 +546,7 @@ footer{
             <div class="dropdown dropdown-work">
         <div class="dc-grid">
           <a href="/work.html" class="dc-card">
-            <div class="dc-thumb-wrap"><img src="/crowd-at-music-concert-in-purple-light-2026-01-09-10-14-00-utc.jpg" class="dc-thumb" alt="Grow Church"></div>
+            <div class="dc-thumb-wrap"><img loading="lazy" src="/crowd-at-music-concert-in-purple-light-2026-01-09-10-14-00-utc.jpg" class="dc-thumb" alt="Grow Church"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-grow">GROW</span>
               <div class="dc-title">Grow Church</div>
@@ -529,7 +554,7 @@ footer{
             </div>
           </a>
           <a href="/work.html" class="dc-card">
-            <div class="dc-thumb-wrap"><img src="/business-meeting-and-financial-analysis-in-office-2026-01-07-00-49-57-utc.jpg" class="dc-thumb" alt="FVLN"></div>
+            <div class="dc-thumb-wrap"><img loading="lazy" src="/business-meeting-and-financial-analysis-in-office-2026-01-07-00-49-57-utc.jpg" class="dc-thumb" alt="FVLN"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-build">BUILD</span>
               <div class="dc-title">FVLN</div>
@@ -537,7 +562,7 @@ footer{
             </div>
           </a>
           <a href="/work.html" class="dc-card">
-            <div class="dc-thumb-wrap"><img src="/crowds-the-audience-at-a-concert-of-an-oratorium-2026-01-06-08-59-53-utc.jpg" class="dc-thumb" alt="New Life Church"></div>
+            <div class="dc-thumb-wrap"><img loading="lazy" src="/crowds-the-audience-at-a-concert-of-an-oratorium-2026-01-06-08-59-53-utc.jpg" class="dc-thumb" alt="New Life Church"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-build">BUILD</span>
               <div class="dc-title">New Life Church</div>
@@ -556,7 +581,7 @@ footer{
             <div class="dropdown dropdown-ins">
         <div class="di-list">
           <a href="/insights" class="di-card">
-            <div class="di-thumb-wrap"><img src="/kind-leader-executive-manager-share-and-discuss-bu-2026-01-05-23-25-07-utc.jpg" class="di-thumb" alt=""></div>
+            <div class="di-thumb-wrap"><img loading="lazy" src="/kind-leader-executive-manager-share-and-discuss-bu-2026-01-05-23-25-07-utc.jpg" class="di-thumb" alt=""></div>
             <div class="di-content">
               <span class="di-label" style="color:#FE7234">LEAD</span>
               <div class="di-title">Why most founder-led businesses stall at the same point</div>
@@ -564,7 +589,7 @@ footer{
             </div>
           </a>
           <a href="/insights" class="di-card">
-            <div class="di-thumb-wrap"><img src="/top-view-of-table-with-financial-papers-and-calcul-2026-01-08-22-39-45-utc.jpg" class="di-thumb" alt=""></div>
+            <div class="di-thumb-wrap"><img loading="lazy" src="/top-view-of-table-with-financial-papers-and-calcul-2026-01-08-22-39-45-utc.jpg" class="di-thumb" alt=""></div>
             <div class="di-content">
               <span class="di-label" style="color:#0077FE">BUILD</span>
               <div class="di-title">The structure problem hiding behind every growth plateau</div>
@@ -572,7 +597,7 @@ footer{
             </div>
           </a>
           <a href="/insights" class="di-card">
-            <div class="di-thumb-wrap"><img src="/business-people-meeting-using-laptop-computer-calc-2026-01-07-00-50-24-utc.jpg" class="di-thumb" alt=""></div>
+            <div class="di-thumb-wrap"><img loading="lazy" src="/business-people-meeting-using-laptop-computer-calc-2026-01-07-00-50-24-utc.jpg" class="di-thumb" alt=""></div>
             <div class="di-content">
               <span class="di-label" style="color:#FEA835">GROW</span>
               <div class="di-title">Why positioning work fails without operational depth behind it</div>
@@ -605,6 +630,7 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg-word">GROW</div>
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="hero-inner">
@@ -839,7 +865,7 @@ footer{
 <script>
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 <div id="nav-overlay"></div>
@@ -875,6 +901,16 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     ov.classList.remove('active');
   });
 })();
+
+/* ── HERO PARALLAX ── */
+(function(){
+  var w=document.querySelector('.hero-bg-word');
+  if(!w)return;
+  window.addEventListener('scroll',function(){
+    w.style.transform='translateY('+window.scrollY*0.4+'px)';
+  },{passive:true});
+})();
+
 </script>
 </body>
 </html>
