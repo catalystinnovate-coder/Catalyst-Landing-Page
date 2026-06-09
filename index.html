@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
   --text:#0d0d14;--muted:#6b7280;--r:16px;--r-sm:10px;--r-lg:24px;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Barlow',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;padding-top:100px}
+body{font-family:'Barlow',sans-serif;background:transparent;color:var(--text);overflow-x:hidden;padding-top:100px}
 
 /* ── NAV ── */
 .site-nav{
@@ -111,31 +111,30 @@ body{font-family:'Barlow',sans-serif;background:var(--white);color:var(--text);o
   margin:0 auto;padding:0;
 }
 .nav-links>li{list-style:none;position:relative}
-.nav-links .sep{
-  color:rgba(14,13,13,0.25);font-size:10px;user-select:none;
-  padding:0 2px;list-style:none;
-}
+.nav-links .sep{color:rgba(14,13,13,0.25);font-size:10px;user-select:none;padding:0 2px;list-style:none}
 .nav-link{
   font-family:'Glacial Indifference',sans-serif;font-size:0.78rem;
   text-transform:uppercase;letter-spacing:0.12em;
   color:#0E0D0D;opacity:0.6;text-decoration:none;
   display:inline-flex;align-items:center;gap:4px;
-  padding:22px 14px;white-space:nowrap;position:relative;
-  transition:opacity 0.2s;
+  padding:22px 14px;white-space:nowrap;position:relative;transition:opacity 0.2s;
 }
 .nav-link:hover{opacity:1;color:#0E0D0D}
 .nav-link.active{color:#0077FE;opacity:1}
 .nav-chevron{width:10px;height:6px;flex-shrink:0;transition:transform 0.2s}
 .has-dropdown:hover .nav-chevron{transform:rotate(180deg)}
-.nav-dot{
-  width:6px;height:6px;background:#0077FE;border-radius:50%;
-  position:absolute;top:10px;left:50%;transform:translateX(-50%);
+.nav-line{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  height:3px;border-radius:0 0 3px 3px;width:60%;
   opacity:0;transition:opacity 0.2s;pointer-events:none;
 }
-.has-dropdown:hover .nav-dot{opacity:1}
-.has-dropdown::after{
-  content:'';position:absolute;top:100%;left:0;right:0;height:20px;
-}
+.nav-link:hover .nav-line,.nav-link.active .nav-line{opacity:1}
+.lnk-build .nav-line{background:#0077FE;box-shadow:0 0 8px 2px rgba(0,119,254,0.4)}
+.lnk-lead  .nav-line{background:#FE7234;box-shadow:0 0 8px 2px rgba(254,114,52,0.4)}
+.lnk-grow  .nav-line{background:#FEA835;box-shadow:0 0 8px 2px rgba(254,168,53,0.4)}
+.lnk-work  .nav-line{background:#0077FE;box-shadow:0 0 8px 2px rgba(0,119,254,0.4)}
+.lnk-ins   .nav-line{background:#08C3FF;box-shadow:0 0 8px 2px rgba(8,195,255,0.4)}
+.has-dropdown::after{content:'';position:absolute;top:100%;left:0;right:0;height:20px}
 .dropdown{
   position:absolute;top:calc(100% + 20px);left:50%;
   transform:translateX(-50%) translateY(-8px);
@@ -144,25 +143,54 @@ body{font-family:'Barlow',sans-serif;background:var(--white);color:var(--text);o
   padding:24px;min-width:280px;
   opacity:0;pointer-events:none;
   transition:opacity 0.2s ease,transform 0.2s ease;
-  z-index:10;
+  z-index:1010;
 }
-.has-dropdown:hover .dropdown{
-  opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;
-}
+.lnk-build .dropdown{border-top:3px solid #0077FE}
+.lnk-lead  .dropdown{border-top:3px solid #FE7234}
+.lnk-grow  .dropdown{border-top:3px solid #FEA835}
+.lnk-work  .dropdown{border-top:3px solid #0077FE}
+.lnk-ins   .dropdown{border-top:3px solid #08C3FF}
+.has-dropdown:hover .dropdown{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
 .dropdown-header{
   font-family:'Glacial Indifference',sans-serif;
   font-size:0.68rem;text-transform:uppercase;letter-spacing:0.15em;
   color:#0077FE;font-weight:700;
-  margin-bottom:14px;padding-bottom:10px;
-  border-bottom:1px solid rgba(0,0,0,0.06);
+  margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(0,0,0,0.06);
 }
 .dropdown a{
   display:block;font-family:'Glacial Indifference',sans-serif;
   font-size:0.9rem;color:#0E0D0D;text-decoration:none;
-  padding:7px 0;opacity:0.65;
-  transition:opacity 0.15s,color 0.15s;letter-spacing:0.02em;
+  padding:7px 0;opacity:0.65;transition:opacity 0.15s,color 0.15s;letter-spacing:0.02em;
 }
 .dropdown a:hover{opacity:1;color:#0077FE}
+.dropdown-grid{min-width:640px;padding:20px 24px 16px}
+.dd-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.dd-card{
+  background:#0E0D0D;border-radius:12px;padding:20px;
+  text-decoration:none;display:block;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.dd-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.dd-card-label{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;
+  color:#0077FE;margin-bottom:8px;display:block;
+}
+.dd-card-title{
+  font-family:'Aburo',sans-serif;
+  font-size:0.95rem;color:#fff;font-weight:700;margin-bottom:6px;line-height:1.3;
+}
+.dd-card-desc{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.4;
+}
+.dd-footer{border-top:1px solid rgba(0,0,0,0.06);padding-top:12px}
+.dd-footer a{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.75rem;color:#0077FE;text-decoration:none;
+  text-transform:uppercase;letter-spacing:0.1em;opacity:0.8;transition:opacity 0.15s;
+}
+.dd-footer a:hover{opacity:1}
 .nav-cta{
   font-family:'Glacial Indifference',sans-serif;font-size:0.78rem;
   text-transform:uppercase;letter-spacing:0.1em;
@@ -172,6 +200,13 @@ body{font-family:'Barlow',sans-serif;background:var(--white);color:var(--text);o
   transition:opacity 0.2s;margin-left:16px;
 }
 .nav-cta:hover{opacity:0.85}
+#nav-overlay{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
+  z-index:999;opacity:0;pointer-events:none;transition:opacity 0.2s ease;
+}
+#nav-overlay.active{opacity:1;pointer-events:auto}
 
 /* HERO — full bleed centred */
 .hero{min-height:calc(100vh - 100px);position:relative;overflow:hidden;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
@@ -670,8 +705,8 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
 <nav class="site-nav">
   <a href="/" class="nav-logo">CATALYST<span class="logo-dot">.</span></a>
   <ul class="nav-links">
-    <li class="has-dropdown">
-      <a href="/build" class="nav-link">Build <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-dot"></span></a>
+    <li class="has-dropdown lnk-build">
+      <a href="/build" class="nav-link">Build <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
       <div class="dropdown">
         <div class="dropdown-header">BUILD — Organisational Design</div>
         <a href="/build">Org Structure &amp; Team Design</a>
@@ -682,8 +717,8 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
       </div>
     </li>
     <li class="sep" aria-hidden="true">·</li>
-    <li class="has-dropdown">
-      <a href="/lead" class="nav-link">Lead <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-dot"></span></a>
+    <li class="has-dropdown lnk-lead">
+      <a href="/lead" class="nav-link">Lead <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
       <div class="dropdown">
         <div class="dropdown-header">LEAD — Leadership &amp; Culture</div>
         <a href="/lead">Management Frameworks</a>
@@ -694,8 +729,8 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
       </div>
     </li>
     <li class="sep" aria-hidden="true">·</li>
-    <li class="has-dropdown">
-      <a href="/grow" class="nav-link">Grow <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-dot"></span></a>
+    <li class="has-dropdown lnk-grow">
+      <a href="/grow" class="nav-link">Grow <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
       <div class="dropdown">
         <div class="dropdown-header">GROW — Marketing &amp; Growth</div>
         <a href="/grow">Brand Positioning</a>
@@ -706,9 +741,53 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
       </div>
     </li>
     <li class="sep" aria-hidden="true">·</li>
-    <li><a href="/work" class="nav-link">Work</a></li>
+    <li class="has-dropdown lnk-work">
+      <a href="/work" class="nav-link">Work <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
+      <div class="dropdown dropdown-grid">
+        <div class="dd-cards">
+          <a href="/work" class="dd-card">
+            <span class="dd-card-label">GROW</span>
+            <div class="dd-card-title">Grow Church</div>
+            <div class="dd-card-desc">Brand identity and growth strategy for a fast-scaling faith community</div>
+          </a>
+          <a href="/work" class="dd-card">
+            <span class="dd-card-label">BUILD</span>
+            <div class="dd-card-title">FVLN</div>
+            <div class="dd-card-desc">Go-to-market positioning and brand strategy for a luxury property brand</div>
+          </a>
+          <a href="/work" class="dd-card">
+            <span class="dd-card-label">BUILD</span>
+            <div class="dd-card-title">New Life Church</div>
+            <div class="dd-card-desc">Organisational design and communications overhaul</div>
+          </a>
+        </div>
+        <div class="dd-footer"><a href="/work">See all work &#8594;</a></div>
+      </div>
+    </li>
     <li class="sep" aria-hidden="true">·</li>
-    <li><a href="/insights" class="nav-link">Insights</a></li>
+    <li class="has-dropdown lnk-ins">
+      <a href="/insights" class="nav-link">Insights <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
+      <div class="dropdown dropdown-grid">
+        <div class="dd-cards">
+          <a href="/insights" class="dd-card">
+            <span class="dd-card-label">LEAD</span>
+            <div class="dd-card-title">Why most founder-led businesses stall at the same point</div>
+            <div class="dd-card-desc"></div>
+          </a>
+          <a href="/insights" class="dd-card">
+            <span class="dd-card-label">BUILD</span>
+            <div class="dd-card-title">The structure problem hiding behind every growth plateau</div>
+            <div class="dd-card-desc"></div>
+          </a>
+          <a href="/insights" class="dd-card">
+            <span class="dd-card-label">GROW</span>
+            <div class="dd-card-title">Why positioning work fails without operational depth behind it</div>
+            <div class="dd-card-desc"></div>
+          </a>
+        </div>
+        <div class="dd-footer"><a href="/insights">Read all insights &#8594;</a></div>
+      </div>
+    </li>
   </ul>
   <a href="#" onclick="openModal();return false;" class="nav-cta">Start a conversation</a>
 </nav>
@@ -1409,5 +1488,16 @@ document.getElementById('hamburger').addEventListener('click', function() {
 #contact-modal.open { display:flex; }
 </style>
 
+<div id="nav-overlay"></div>
+<script>
+(function(){
+  var ov=document.getElementById('nav-overlay');
+  if(!ov)return;
+  document.querySelectorAll('.has-dropdown').forEach(function(el){
+    el.addEventListener('mouseenter',function(){ov.classList.add('active')});
+    el.addEventListener('mouseleave',function(){ov.classList.remove('active')});
+  });
+})();
+</script>
 </body>
 </html>
