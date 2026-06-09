@@ -257,7 +257,7 @@ body{font-family:'Barlow',sans-serif;background:#0E0D0D;color:var(--text);overfl
 .dropdown-work .dc-card{padding:0;overflow:hidden}
 .dropdown-work .dc-grid{margin-bottom:20px}
 .dc-thumb-wrap{overflow:hidden;height:160px;display:block;border-radius:10px 10px 0 0}
-.dc-thumb{width:100%;height:160px;object-fit:cover;display:block;border-radius:10px 10px 0 0;transition:transform 0.4s ease}
+.dc-thumb{width:100%;height:160px;object-fit:cover;display:block;border-radius:10px 10px 0 0;will-change:transform;transition:transform 0.4s ease}
 .dc-card:hover .dc-thumb{transform:scale(1.08)}
 .dc-card-body{padding:14px 20px 20px}
 /* ── INSIGHTS TRAY (horizontal editorial) ── */
@@ -266,7 +266,7 @@ body{font-family:'Barlow',sans-serif;background:#0E0D0D;color:var(--text);overfl
 .di-card{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid #f0f0f0;text-decoration:none}
 .di-card:last-child{border-bottom:none}
 .di-thumb-wrap{width:120px;min-width:120px;height:100px;overflow:hidden;border-radius:8px;flex-shrink:0}
-.di-thumb{width:100%;height:100%;object-fit:cover;display:block;transition:filter 0.2s}
+.di-thumb{width:100%;height:100%;object-fit:cover;display:block;will-change:transform;transition:filter 0.2s}
 .di-card:hover .di-thumb{filter:brightness(1.1)}
 .di-content{flex:1;padding-top:2px}
 .di-label{font-family:'Glacial Indifference',sans-serif;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;font-weight:700;margin-bottom:6px;display:block}
@@ -838,7 +838,7 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
             <div class="dropdown dropdown-work">
         <div class="dc-grid">
           <a href="/work.html" class="dc-card">
-            <div class="dc-thumb-wrap"><img loading="lazy" src="/crowd-at-music-concert-in-purple-light-2026-01-09-10-14-00-utc.jpg" class="dc-thumb" alt="Grow Church"></div>
+            <div class="dc-thumb-wrap"><img loading="lazy" decoding="async" src="/crowd-at-music-concert-in-purple-light-2026-01-09-10-14-00-utc-th.jpg" class="dc-thumb" alt="Grow Church"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-grow">GROW</span>
               <div class="dc-title">Grow Church</div>
@@ -846,7 +846,7 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
             </div>
           </a>
           <a href="/work.html" class="dc-card">
-            <div class="dc-thumb-wrap"><img loading="lazy" src="/business-meeting-and-financial-analysis-in-office-2026-01-07-00-49-57-utc.jpg" class="dc-thumb" alt="FVLN"></div>
+            <div class="dc-thumb-wrap"><img loading="lazy" decoding="async" src="/business-meeting-and-financial-analysis-in-office-2026-01-07-00-49-57-utc-th.jpg" class="dc-thumb" alt="FVLN"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-build">BUILD</span>
               <div class="dc-title">FVLN</div>
@@ -854,7 +854,7 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
             </div>
           </a>
           <a href="/work.html" class="dc-card">
-            <div class="dc-thumb-wrap"><img loading="lazy" src="/crowds-the-audience-at-a-concert-of-an-oratorium-2026-01-06-08-59-53-utc.jpg" class="dc-thumb" alt="New Life Church"></div>
+            <div class="dc-thumb-wrap"><img loading="lazy" decoding="async" src="/crowds-the-audience-at-a-concert-of-an-oratorium-2026-01-06-08-59-53-utc-th.jpg" class="dc-thumb" alt="New Life Church"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-build">BUILD</span>
               <div class="dc-title">New Life Church</div>
@@ -873,7 +873,7 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
             <div class="dropdown dropdown-ins">
         <div class="di-list">
           <a href="/insights" class="di-card">
-            <div class="di-thumb-wrap"><img loading="lazy" src="/kind-leader-executive-manager-share-and-discuss-bu-2026-01-05-23-25-07-utc.jpg" class="di-thumb" alt=""></div>
+            <div class="di-thumb-wrap"><img loading="lazy" decoding="async" src="/kind-leader-executive-manager-share-and-discuss-bu-2026-01-05-23-25-07-utc-th.jpg" class="di-thumb" alt=""></div>
             <div class="di-content">
               <span class="di-label" style="color:#FE7234">LEAD</span>
               <div class="di-title">Why most founder-led businesses stall at the same point</div>
@@ -881,7 +881,7 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
             </div>
           </a>
           <a href="/insights" class="di-card">
-            <div class="di-thumb-wrap"><img loading="lazy" src="/top-view-of-table-with-financial-papers-and-calcul-2026-01-08-22-39-45-utc.jpg" class="di-thumb" alt=""></div>
+            <div class="di-thumb-wrap"><img loading="lazy" decoding="async" src="/top-view-of-table-with-financial-papers-and-calcul-2026-01-08-22-39-45-utc-th.jpg" class="di-thumb" alt=""></div>
             <div class="di-content">
               <span class="di-label" style="color:#0077FE">BUILD</span>
               <div class="di-title">The structure problem hiding behind every growth plateau</div>
@@ -889,7 +889,7 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
             </div>
           </a>
           <a href="/insights" class="di-card">
-            <div class="di-thumb-wrap"><img loading="lazy" src="/business-people-meeting-using-laptop-computer-calc-2026-01-07-00-50-24-utc.jpg" class="di-thumb" alt=""></div>
+            <div class="di-thumb-wrap"><img loading="lazy" decoding="async" src="/business-people-meeting-using-laptop-computer-calc-2026-01-07-00-50-24-utc-th.jpg" class="di-thumb" alt=""></div>
             <div class="di-content">
               <span class="di-label" style="color:#FEA835">GROW</span>
               <div class="di-title">Why positioning work fails without operational depth behind it</div>
