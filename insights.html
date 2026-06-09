@@ -56,11 +56,10 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
   opacity:0;transition:opacity 0.2s;pointer-events:none;
 }
 .nav-link:hover .nav-line,.nav-link.active .nav-line{opacity:1}
-.lnk-build .nav-line{background:#0077FE;box-shadow:0 0 8px 2px rgba(0,119,254,0.4)}
-.lnk-lead  .nav-line{background:#FE7234;box-shadow:0 0 8px 2px rgba(254,114,52,0.4)}
-.lnk-grow  .nav-line{background:#FEA835;box-shadow:0 0 8px 2px rgba(254,168,53,0.4)}
-.lnk-work  .nav-line{background:#0077FE;box-shadow:0 0 8px 2px rgba(0,119,254,0.4)}
-.lnk-ins   .nav-line{background:#08C3FF;box-shadow:0 0 8px 2px rgba(8,195,255,0.4)}
+.lnk-services .nav-line{background:#0077FE;box-shadow:0 0 8px 2px rgba(0,119,254,0.4)}
+.lnk-work     .nav-line{background:#0077FE;box-shadow:0 0 8px 2px rgba(0,119,254,0.4)}
+.lnk-ins      .nav-line{background:#08C3FF;box-shadow:0 0 8px 2px rgba(8,195,255,0.4)}
+.lnk-about    .nav-line{background:#0077FE;box-shadow:0 0 8px 2px rgba(0,119,254,0.4)}
 .has-dropdown::after{content:'';position:absolute;top:100%;left:0;right:0;height:20px}
 .dropdown{
   position:absolute;top:calc(100% + 20px);left:50%;
@@ -72,18 +71,11 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
   transition:opacity 0.2s ease,transform 0.2s ease;
   z-index:1010;
 }
-.lnk-build .dropdown{border-top:3px solid #0077FE}
-.lnk-lead  .dropdown{border-top:3px solid #FE7234}
-.lnk-grow  .dropdown{border-top:3px solid #FEA835}
-.lnk-work  .dropdown{border-top:3px solid #0077FE}
-.lnk-ins   .dropdown{border-top:3px solid #08C3FF}
+.lnk-services .dropdown{border-top:3px solid #0077FE}
+.lnk-work     .dropdown{border-top:3px solid #0077FE}
+.lnk-ins      .dropdown{border-top:3px solid #08C3FF}
+.lnk-about    .dropdown{border-top:3px solid #0077FE}
 .has-dropdown:hover .dropdown{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
-.dropdown-header{
-  font-family:'Glacial Indifference',sans-serif;
-  font-size:0.68rem;text-transform:uppercase;letter-spacing:0.15em;
-  color:#0077FE;font-weight:700;
-  margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(0,0,0,0.06);
-}
 .dropdown a{
   display:block;font-family:'Glacial Indifference',sans-serif;
   font-size:0.9rem;color:#0E0D0D;text-decoration:none;
@@ -116,8 +108,43 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
   font-family:'Glacial Indifference',sans-serif;
   font-size:0.75rem;color:#0077FE;text-decoration:none;
   text-transform:uppercase;letter-spacing:0.1em;opacity:0.8;transition:opacity 0.15s;
+  display:inline!important;padding:0!important;
 }
 .dd-footer a:hover{opacity:1}
+.dropdown-services{min-width:800px;padding:24px 28px 18px}
+.service-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.service-col{padding:0 24px;border-right:1px solid rgba(0,0,0,0.06)}
+.service-col:first-child{padding-left:0}
+.service-col:last-child{padding-right:0;border-right:none}
+.col-accent{height:3px;border-radius:2px;margin-bottom:14px}
+.col-build .col-accent{background:#0077FE}
+.col-lead  .col-accent{background:#FE7234}
+.col-grow  .col-accent{background:#FEA835}
+.dropdown-services .col-heading-link{
+  font-family:'Aburo',sans-serif;font-size:0.95rem;font-weight:700;
+  color:#0E0D0D;text-decoration:none;letter-spacing:0.08em;
+  padding:0;display:inline;opacity:1;
+}
+.dropdown-services .col-heading-link:hover{color:#0077FE;opacity:1}
+.col-subheading{
+  font-family:'Glacial Indifference',sans-serif;font-size:0.7rem;
+  text-transform:uppercase;letter-spacing:0.1em;
+  color:rgba(14,13,13,0.45);margin:4px 0 10px;
+}
+.col-desc{
+  font-family:'Glacial Indifference',sans-serif;font-size:0.82rem;
+  color:rgba(14,13,13,0.55);line-height:1.5;
+  margin-bottom:14px;padding-bottom:14px;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.col-links{list-style:none;padding:0;margin:0}
+.dropdown-services .col-link{
+  display:block;font-family:'Glacial Indifference',sans-serif;
+  font-size:0.84rem;color:#0E0D0D;text-decoration:none;
+  padding:5px 0;opacity:0.65;
+  transition:opacity 0.15s,color 0.15s;letter-spacing:0.02em;
+}
+.dropdown-services .col-link:hover{opacity:1;color:#0077FE}
 .nav-cta{
   font-family:'Glacial Indifference',sans-serif;font-size:0.78rem;
   text-transform:uppercase;letter-spacing:0.1em;
@@ -389,39 +416,51 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
 <nav class="site-nav">
   <a href="/" class="nav-logo">CATALYST<span class="logo-dot">.</span></a>
   <ul class="nav-links">
-    <li class="has-dropdown lnk-build">
-      <a href="/build" class="nav-link">Build <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
-      <div class="dropdown">
-        <div class="dropdown-header">BUILD — Organisational Design</div>
-        <a href="/build">Org Structure &amp; Team Design</a>
-        <a href="/build">Operational Systems &amp; SOPs</a>
-        <a href="/build">Financial Controls</a>
-        <a href="/build">Hiring Frameworks</a>
-        <a href="/build">Fractional COO</a>
-      </div>
-    </li>
-    <li class="sep" aria-hidden="true">·</li>
-    <li class="has-dropdown lnk-lead">
-      <a href="/lead" class="nav-link">Lead <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
-      <div class="dropdown">
-        <div class="dropdown-header">LEAD — Leadership &amp; Culture</div>
-        <a href="/lead">Management Frameworks</a>
-        <a href="/lead">Leadership Development</a>
-        <a href="/lead">Culture Design</a>
-        <a href="/lead">Accountability Systems</a>
-        <a href="/lead">Executive Advisory</a>
-      </div>
-    </li>
-    <li class="sep" aria-hidden="true">·</li>
-    <li class="has-dropdown lnk-grow">
-      <a href="/grow" class="nav-link">Grow <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
-      <div class="dropdown">
-        <div class="dropdown-header">GROW — Marketing &amp; Growth</div>
-        <a href="/grow">Brand Positioning</a>
-        <a href="/grow">Go-To-Market Strategy</a>
-        <a href="/grow">Content &amp; Distribution</a>
-        <a href="/grow">Growth Architecture</a>
-        <a href="/grow">Market Expansion</a>
+    <li class="has-dropdown lnk-services">
+      <a href="/#services" class="nav-link">Services <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
+      <div class="dropdown dropdown-services">
+        <div class="service-cols">
+          <div class="service-col col-build">
+            <div class="col-accent"></div>
+            <a href="/build" class="col-heading-link">BUILD</a>
+            <div class="col-subheading">Organisational Design &amp; Operations</div>
+            <div class="col-desc">The internal engine. Structure, systems, and operational infrastructure for founder-led businesses ready to scale.</div>
+            <ul class="col-links">
+              <li><a href="/build" class="col-link">Org Structure &amp; Team Design</a></li>
+              <li><a href="/build" class="col-link">Operational Systems &amp; SOPs</a></li>
+              <li><a href="/build" class="col-link">Financial Controls</a></li>
+              <li><a href="/build" class="col-link">Hiring Frameworks</a></li>
+              <li><a href="/build" class="col-link">Fractional COO</a></li>
+            </ul>
+          </div>
+          <div class="service-col col-lead">
+            <div class="col-accent"></div>
+            <a href="/lead" class="col-heading-link">LEAD</a>
+            <div class="col-subheading">Leadership &amp; Culture</div>
+            <div class="col-desc">The human layer. Management frameworks, leadership development, and culture architecture for growing teams.</div>
+            <ul class="col-links">
+              <li><a href="/lead" class="col-link">Management Frameworks</a></li>
+              <li><a href="/lead" class="col-link">Leadership Development</a></li>
+              <li><a href="/lead" class="col-link">Culture Design</a></li>
+              <li><a href="/lead" class="col-link">Accountability Systems</a></li>
+              <li><a href="/lead" class="col-link">Executive Advisory</a></li>
+            </ul>
+          </div>
+          <div class="service-col col-grow">
+            <div class="col-accent"></div>
+            <a href="/grow" class="col-heading-link">GROW</a>
+            <div class="col-subheading">Marketing &amp; Growth Strategy</div>
+            <div class="col-desc">The external engine. Brand positioning, go-to-market strategy, and growth systems for ambitious founders.</div>
+            <ul class="col-links">
+              <li><a href="/grow" class="col-link">Brand Positioning</a></li>
+              <li><a href="/grow" class="col-link">Go-To-Market Strategy</a></li>
+              <li><a href="/grow" class="col-link">Content &amp; Distribution</a></li>
+              <li><a href="/grow" class="col-link">Growth Architecture</a></li>
+              <li><a href="/grow" class="col-link">Market Expansion</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="dd-footer"><a href="/#services">Go to services &#8594;</a></div>
       </div>
     </li>
     <li class="sep" aria-hidden="true">·</li>
@@ -470,6 +509,14 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
           </a>
         </div>
         <div class="dd-footer"><a href="/insights">Read all insights &#8594;</a></div>
+      </div>
+    </li>
+    <li class="sep" aria-hidden="true">·</li>
+    <li class="has-dropdown lnk-about">
+      <a href="/about" class="nav-link">About <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
+      <div class="dropdown">
+        <a href="/about">Who we are</a>
+        <a href="/about#team">The Team</a>
       </div>
     </li>
   </ul>

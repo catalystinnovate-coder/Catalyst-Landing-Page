@@ -6,7 +6,8 @@
     { "source": "/build", "destination": "/build.html" },
     { "source": "/lead", "destination": "/lead.html" },
     { "source": "/work", "destination": "/work.html" },
-    { "source": "/insights", "destination": "/insights.html" }
+    { "source": "/insights", "destination": "/insights.html" },
+    { "source": "/about", "destination": "/about.html" }
   ],
   "headers": [
     {
