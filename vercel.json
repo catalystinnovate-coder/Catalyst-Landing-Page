@@ -1,9 +1,17 @@
 {
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
   "rewrites": [
     { "source": "/grow", "destination": "/grow.html" },
     { "source": "/build", "destination": "/build.html" },
     { "source": "/lead", "destination": "/lead.html" },
     { "source": "/work", "destination": "/work.html" },
     { "source": "/insights", "destination": "/insights.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*).html",
+      "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+    }
   ]
 }
