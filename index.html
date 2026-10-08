@@ -74,6 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+<script>
+/* ── NEWSLETTER (reused from insights.html) ── */
+function subscribeNewsletter() {
+  const email = document.getElementById('nl-email').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  window.location.href = `mailto:info@thecatalystinnovation.com?subject=Newsletter Subscription&body=Please add me to the Catalyst Insights newsletter.%0A%0AEmail: ${email}`;
+}
+</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -761,6 +769,98 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
 
 
 
+
+/* ── THINKING SECTION (reused from insights.html) ── */
+.meta-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;padding:5px 12px;border-radius:100px;}
+.tag-grow{background:rgba(0,119,255,0.08);color:var(--cobalt);}
+.tag-build{background:rgba(254,114,53,0.08);color:var(--coral);}
+.tag-lead{background:rgba(168,85,247,0.08);color:#7c3aed;}
+.tag-article{background:rgba(0,0,0,0.05);color:var(--muted);}
+.tag-thought{background:rgba(0,195,255,0.08);color:#0088bb;}
+.tag-framework{background:rgba(254,167,53,0.08);color:#b86000;}
+.meta-date{font-size:12px;color:var(--muted);font-weight:300;}
+/* ── ARTICLE GRID ── */
+.articles-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;padding:2px;
+  background:var(--cream);
+}
+.article-card{
+  background:var(--white);
+  border-radius:0;
+  cursor:pointer;
+  transition:transform 0.3s,box-shadow 0.3s;
+  position:relative;overflow:hidden;
+}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,119,255,0.09);z-index:2;}
+.article-card::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.article-card.grow::before{background:linear-gradient(90deg,var(--cobalt),var(--sky));}
+.article-card.build::before{background:linear-gradient(90deg,var(--coral),var(--amber));}
+.article-card.lead::before{background:linear-gradient(90deg,#7c3aed,#a855f7);}
+.article-card:hover::before{transform:scaleX(1);}
+
+.article-img{
+  height:200px;overflow:hidden;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.article-img-bg{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',cursive;font-size:100px;
+  opacity:0.05;letter-spacing:0.02em;
+  transition:transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.article-card:hover .article-img-bg{transform:scale(1.08);}
+.article-body{padding:32px;}
+.article-meta{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+.article-title{font-family:'Bebas Neue',cursive;font-size:clamp(22px,2.5vw,30px);line-height:1.1;color:var(--text);margin-bottom:12px;transition:color 0.3s;}
+.article-card:hover .article-title{background:linear-gradient(135deg,var(--cobalt),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.article-excerpt{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted);margin-bottom:24px;}
+.article-footer{display:flex;align-items:center;justify-content:space-between;}
+.article-author{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text);}
+.article-read-more{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cobalt);display:flex;align-items:center;gap:4px;}
+.article-read-more::after{content:'→';}
+/* ── NEWSLETTER ── */
+.newsletter{
+  background:var(--dark);padding:100px 80px;
+  position:relative;overflow:hidden;text-align:center;
+}
+.newsletter::before{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:600px;height:500px;background:radial-gradient(ellipse,rgba(0,195,255,0.12) 0%,transparent 65%);border-radius:50%;pointer-events:none;}
+.newsletter::after{content:'';position:absolute;bottom:-100px;right:-80px;width:400px;height:400px;background:radial-gradient(ellipse,rgba(254,114,53,0.08) 0%,transparent 65%);border-radius:50%;pointer-events:none;}
+.newsletter-inner{position:relative;z-index:2;max-width:560px;margin:0 auto;}
+.newsletter-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--cobalt);margin-bottom:20px;}
+.newsletter h2{font-family:'Bebas Neue',cursive;font-size:clamp(44px,6vw,80px);line-height:0.95;color:#fff;margin-bottom:20px;}
+.newsletter h2 span{background:linear-gradient(135deg,var(--cobalt),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.newsletter p{font-size:16px;font-weight:300;line-height:1.7;color:rgba(255,255,255,0.5);margin-bottom:36px;}
+.email-form{display:flex;gap:12px;max-width:480px;margin:0 auto;}
+.email-input{
+  flex:1;padding:14px 20px;
+  background:rgba(255,255,255,0.06);
+  border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:100px;color:#fff;
+  font-family:'Barlow',sans-serif;font-size:15px;
+  outline:none;transition:border-color 0.2s;
+}
+.email-input::placeholder{color:rgba(255,255,255,0.3);}
+.email-input:focus{border-color:var(--cobalt);}
+.email-btn{
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:#fff;background:linear-gradient(135deg,var(--cobalt),var(--sky));
+  padding:14px 28px;border:none;border-radius:100px;cursor:pointer;
+  white-space:nowrap;transition:opacity 0.2s;
+}
+.email-btn:hover{opacity:0.85;}
+
+@media (max-width: 768px) {
+  .articles-grid { grid-template-columns: 1fr; }
+  .newsletter { padding: 80px 24px; }
+  .email-form { flex-direction: column; }
+}
 </style>
 </head>
 <body>
@@ -943,6 +1043,14 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
   </div>
 </div>
 
+<!-- FEATURED CASE STUDY -->
+<section class="work" style="padding-bottom:0;">
+  <div class="work-header"><div class="section-tag">Featured Work</div><h2 class="work-title">A recent engagement.</h2></div>
+  <div style="max-width:600px;">
+    <div class="work-card"><div><div class="work-client">FVLN · Brand Strategy</div><div class="work-title-card">Brand Coherence for a Multi-Partner Legal Firm</div><p class="work-desc">Developed a brand coherence methodology and visual identity system for a boutique legal firm repositioning for growth.</p></div><span class="work-tag">GROW</span></div>
+  </div>
+</section>
+
 <!-- STATEMENT -->
 <section class="statement">
   <div>
@@ -980,6 +1088,40 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
   </div>
 </section>
 
+<!-- ACCENT STRIP -->
+<section class="accent-strip" id="intensive">
+  <div class="accent-strip-left"><h3>The Catalyst Intensive.</h3><p>A 90-day embedded engagement to fix structure, build systems, and unlock growth.</p></div>
+  <a href="#intensive" class="btn-dark">Learn More</a>
+</section>
+
+<!-- STATS -->
+<section class="stats-banner" style="position:relative;overflow:hidden;">
+  <canvas id="stats-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
+  <div class="stats-inner" style="position:relative;z-index:2;">
+    <div>
+      <div class="stat-block"><div class="stat-num" data-target="243">0%</div><div class="stat-label">Engagement growth · Connection Therapy Clinic</div><div class="stat-bar"><div class="stat-bar-fill" data-width="88"></div></div></div>
+      <div class="stat-block"><div class="stat-num" style="font-size:80px;">6+</div><div class="stat-label">Industries served across 3 continents</div><div class="stat-bar"><div class="stat-bar-fill coral" data-width="60"></div></div></div>
+    </div>
+    <div class="stats-right">
+      <h2>We don't deliver reports.<br>We deliver results.</h2>
+      <p>Our engagements are embedded, not advisory. We stay until the structure holds and the growth is real.</p>
+      <a href="/work" class="btn-white">See Our Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL GLASS SECTION -->
+<section class="editorial">
+  <div class="editorial-img-wrap">
+    <img id="editorial-img" src="" alt="Catalyst team at work">
+  </div>
+  <div class="editorial-glass-strips" id="glass-strips"></div>
+  <div class="editorial-text">
+    <h2>We accelerate<br>what's already possible.</h2>
+    <p>Catalyst Innovation Solutions</p>
+  </div>
+</section>
+
 <!-- PEOPLE -->
 <section class="people" id="about">
   <div class="people-content">
@@ -1003,34 +1145,6 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
 </section>
 
 
-<!-- EDITORIAL GLASS SECTION -->
-<section class="editorial">
-  <div class="editorial-img-wrap">
-    <img id="editorial-img" src="" alt="Catalyst team at work">
-  </div>
-  <div class="editorial-glass-strips" id="glass-strips"></div>
-  <div class="editorial-text">
-    <h2>We accelerate<br>what's already possible.</h2>
-    <p>Catalyst Innovation Solutions</p>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats-banner" style="position:relative;overflow:hidden;">
-  <canvas id="stats-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
-  <div class="stats-inner" style="position:relative;z-index:2;">
-    <div>
-      <div class="stat-block"><div class="stat-num" data-target="243">0%</div><div class="stat-label">Engagement growth · Connection Therapy Clinic</div><div class="stat-bar"><div class="stat-bar-fill" data-width="88"></div></div></div>
-      <div class="stat-block"><div class="stat-num" style="font-size:80px;">6+</div><div class="stat-label">Industries served across 3 continents</div><div class="stat-bar"><div class="stat-bar-fill coral" data-width="60"></div></div></div>
-    </div>
-    <div class="stats-right">
-      <h2>We don't deliver reports.<br>We deliver results.</h2>
-      <p>Our engagements are embedded, not advisory. We stay until the structure holds and the growth is real.</p>
-      <a href="/work" class="btn-white">See Our Work</a>
-    </div>
-  </div>
-</section>
-
 <!-- WORK -->
 <section class="work">
   <div class="work-header"><div class="section-tag">Selected Work</div><h2 class="work-title">What we've built.</h2></div>
@@ -1038,14 +1152,92 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
     <div class="work-card"><div><div class="work-client">Grow Church · Organisational Design</div><div class="work-title-card">Scaling a Church from Founder-Led to Fully Structured</div><p class="work-desc">Redesigned the org structure and leadership architecture for a growing multi-site church moving through rapid expansion.</p></div><span class="work-tag">BUILD · LEAD</span></div>
     <div class="work-card"><div><div class="work-client">Connection Therapy Clinic · Growth</div><div class="work-title-card">243% Engagement Growth in 30 Days</div><p class="work-desc">Full brand repositioning, content strategy, and growth architecture for a therapy practice entering a new market.</p></div><span class="work-tag">GROW · BUILD</span></div>
     <div class="work-card"><div><div class="work-client">FVLN · Brand Strategy</div><div class="work-title-card">Brand Coherence for a Multi-Partner Legal Firm</div><p class="work-desc">Developed a brand coherence methodology and visual identity system for a boutique legal firm repositioning for growth.</p></div><span class="work-tag">GROW</span></div>
-    <div class="work-card cta-card"><div><div class="work-client" style="color:rgba(255,255,255,0.65);">Ready to build?</div><div class="work-title-card" style="color:white;-webkit-text-fill-color:white;background:none;">Start the conversation with Catalyst.</div><p class="work-desc" style="color:rgba(255,255,255,0.75);">Tell us where you are. We'll tell you what we'd do first.</p></div><a href="/#contact" onclick="openModal();return false;" class="btn-white" style="align-self:flex-start;">Book an intro call</a></div>
   </div>
 </section>
 
-<!-- ACCENT STRIP -->
-<section class="accent-strip" id="intensive">
-  <div class="accent-strip-left"><h3>The Catalyst Intensive.</h3><p>A 90-day embedded engagement to fix structure, build systems, and unlock growth.</p></div>
-  <a href="#intensive" class="btn-dark">Learn More</a>
+<!-- THINKING -->
+<section class="work">
+  <div class="work-header"><div class="section-tag">Thinking</div><h2 class="work-title">Latest from the blog.</h2></div>
+  <div class="articles-grid" style="margin-top:0;">
+    <div class="article-card build" data-tags="build framework" onclick="window.location='/insights'">
+    <div class="article-img" style="background:linear-gradient(135deg,#1a0808,#2a1010);">
+      <div class="article-img-bg" style="color:#FE7235;">ORG</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(254,114,53,0.25),rgba(254,167,53,0.1));"></div>
+    </div>
+    <div class="article-body">
+      <div class="article-meta">
+        <span class="meta-tag tag-build">BUILD</span>
+        <span class="meta-tag tag-framework">Framework</span>
+        <span class="meta-date">April 2026</span>
+      </div>
+      <div class="article-title">The 5-Layer Org Design Framework Every Growing Company Needs</div>
+      <p class="article-excerpt">Most organisational design advice is either too theoretical or too generic. This is the actual framework we use with clients — five layers, in order, that determine whether your structure holds or collapses under growth.</p>
+      <div class="article-footer">
+        <div class="article-author">Maryke Fischer</div>
+        <div class="article-read-more">4 min</div>
+      </div>
+    </div>
+  </div>
+    <div class="article-card lead" data-tags="lead thought" onclick="window.location='/insights'">
+    <div class="article-img" style="background:linear-gradient(135deg,#0c0518,#180830);">
+      <div class="article-img-bg" style="color:#a855f7;">LEAD</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,0.25),rgba(168,85,247,0.1));"></div>
+    </div>
+    <div class="article-body">
+      <div class="article-meta">
+        <span class="meta-tag tag-lead">LEAD</span>
+        <span class="meta-tag tag-thought">Thought Piece</span>
+        <span class="meta-date">April 2026</span>
+      </div>
+      <div class="article-title">Why "Culture Fit" Is the Wrong Thing to Hire For</div>
+      <p class="article-excerpt">Culture fit sounds like a good idea until you realise it's often a proxy for hiring people who think like you. What growing organisations actually need is culture contribution — and the distinction matters more than most leaders realise.</p>
+      <div class="article-footer">
+        <div class="article-author">Maryke Fischer</div>
+        <div class="article-read-more">3 min</div>
+      </div>
+    </div>
+  </div>
+    <div class="article-card grow" data-tags="grow article" onclick="window.location='/insights'">
+    <div class="article-img" style="background:linear-gradient(135deg,#061520,#0a2030);">
+      <div class="article-img-bg" style="color:#00C3FF;">GROW</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,119,255,0.25),rgba(0,195,255,0.1));"></div>
+    </div>
+    <div class="article-body">
+      <div class="article-meta">
+        <span class="meta-tag tag-grow">GROW</span>
+        <span class="meta-tag tag-article">Article</span>
+        <span class="meta-date">March 2026</span>
+      </div>
+      <div class="article-title">You Don't Have a Growth Problem. You Have a Positioning Problem.</div>
+      <p class="article-excerpt">Most businesses we work with think they need more leads. What they actually need is to be more specific about who they serve and why they're the right choice. Positioning isn't a brand exercise — it's a growth strategy.</p>
+      <div class="article-footer">
+        <div class="article-author">Carmen Naidoo</div>
+        <div class="article-read-more">5 min</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div style="text-align:center;margin-top:40px;"><a href="/insights" class="btn-ghost">Read all insights &#8594;</a></div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div class="newsletter-tag">Stay Sharp</div>
+    <h2>Thinking delivered<br>to your <span>inbox.</span></h2>
+    <p>No noise. One piece of thinking per month — frameworks, perspectives, and hard-won lessons from the work we're doing.</p>
+    <div class="email-form">
+      <input type="email" class="email-input" placeholder="your@email.com" id="nl-email">
+      <button class="email-btn" onclick="subscribeNewsletter()">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="work" style="padding-top:0;">
+  <div class="work-grid" style="grid-template-columns:1fr;">
+    <div class="work-card cta-card"><div><div class="work-client" style="color:rgba(255,255,255,0.65);">Ready to build?</div><div class="work-title-card" style="color:white;-webkit-text-fill-color:white;background:none;">Start the conversation with Catalyst.</div><p class="work-desc" style="color:rgba(255,255,255,0.75);">Tell us where you are. We'll tell you what we'd do first.</p></div><a href="/#contact" onclick="openModal();return false;" class="btn-white" style="align-self:flex-start;">Book an intro call</a></div>
+  </div>
 </section>
 
 <!-- FOOTER -->
