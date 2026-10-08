@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Work — Catalyst Innovation Solutions</title>
+<title>A 70-Year Firm. Reborn. | Ferreira Venter Laws &amp; Nel Case Study — Catalyst Innovation Solutions</title>
+<meta name="description" content="How Catalyst repositioned Ferreira Venter Laws &amp; Nel, a 70-year accounting and audit firm, with new brand strategy that unified two audiences and honoured its legacy.">
+<meta property="og:title" content="A 70-Year Firm. Reborn. | Catalyst Innovation Solutions">
+<meta property="og:description" content="How Catalyst repositioned Ferreira Venter Laws &amp; Nel, a 70-year accounting and audit firm, with new brand strategy that unified two audiences and honoured its legacy.">
+<meta property="og:image" content="/logo-black.svg">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thecatalystinnovation.com/work/fvln">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A 70-Year Firm. Reborn. | Catalyst Innovation Solutions">
+<meta name="twitter:description" content="How Catalyst repositioned Ferreira Venter Laws &amp; Nel, a 70-year accounting and audit firm, with new brand strategy that unified two audiences and honoured its legacy.">
+<meta name="twitter:image" content="/logo-black.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -545,8 +555,55 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
 /* ── CARD TILT ── */
 .case-row{transform-style:preserve-3d;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
 </style>
+<style>
+
+/* ── CASE STUDY PAGE ── */
+.cs-hero{position:relative;height:56vh;min-height:420px;max-height:620px;overflow:hidden;background:var(--dark)}
+.cs-hero img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(0.62)}
+.cs-hero-gradient{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,13,20,0.2) 0%,rgba(13,13,20,0.55) 65%,var(--cream) 100%)}
+.cs-hero-content{position:absolute;left:0;right:0;bottom:0;padding:0 80px 56px;max-width:900px}
+.cs-breadcrumb{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:18px}
+.cs-breadcrumb a{color:rgba(255,255,255,0.55);text-decoration:none}
+.cs-breadcrumb a:hover{color:#fff}
+.cs-num{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:14px}
+.cs-tag{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:16px}
+.cs-h1{font-family:'Bebas Neue',cursive;font-size:clamp(40px,6.5vw,88px);line-height:0.98;color:#fff;margin-bottom:14px}
+.cs-client{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.7)}
+
+.cs-body{max-width:1000px;margin:0 auto;padding:72px 80px 40px}
+.cs-section-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--cobalt);margin-bottom:14px}
+.cs-section-h{font-family:'Bebas Neue',cursive;font-size:clamp(28px,3.5vw,40px);line-height:1.05;color:var(--text);margin-bottom:16px}
+.cs-section-p{font-size:17px;font-weight:300;line-height:1.85;color:var(--muted);max-width:760px}
+.cs-section{margin-bottom:56px}
+.cs-two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+
+.cs-stats{display:flex;gap:0;border:1.5px solid rgba(0,0,0,0.08);border-radius:16px;overflow:hidden;margin:16px 0 8px}
+.cs-stat{flex:1;padding:28px 20px;text-align:center;border-right:1.5px solid rgba(0,0,0,0.08)}
+.cs-stat:last-child{border-right:none}
+.cs-stat-n{font-family:'Bebas Neue',cursive;font-size:44px;line-height:1;margin-bottom:6px}
+.cs-stat-l{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+
+.cs-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.cs-svc-pill{display:inline-block;padding:10px 24px;border-radius:100px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-top:8px}
+
+.cs-nav-footer{display:flex;justify-content:space-between;align-items:center;max-width:1000px;margin:0 auto;padding:40px 80px 0;border-top:1px solid rgba(0,0,0,0.06)}
+.cs-back-link{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--cobalt);text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding-top:32px}
+.cs-back-link:hover{opacity:0.75}
+
+@media(max-width:768px){
+  .cs-hero{height:48vh;min-height:360px}
+  .cs-hero-content{padding:0 24px 40px}
+  .cs-body{padding:48px 24px 24px}
+  .cs-two{grid-template-columns:1fr;gap:32px}
+  .cs-stats{flex-wrap:wrap}
+  .cs-stat{min-width:50%}
+  .cs-nav-footer{padding:32px 24px 0}
+}
+
+</style>
 </head>
 <body>
+
 
 <nav class="site-nav">
   <a href="/index.html" class="nav-logo"><img src="/logo-black.svg" alt="Catalyst" style="height:48px;width:auto;"></a>
@@ -602,7 +659,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
       <a href="/work" class="nav-link active">Work <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
             <div class="dropdown dropdown-work">
         <div class="dc-grid">
-          <a href="/work/grow-church" class="dc-card">
+          <a href="/work.html" class="dc-card">
             <div class="dc-thumb-wrap"><img loading="lazy" decoding="async" src="/crowd-at-music-concert-in-purple-light-2026-01-09-10-14-00-utc-th.jpg" class="dc-thumb" alt="Grow Church"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-grow">GROW</span>
@@ -610,7 +667,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
               <p class="dc-desc">Brand identity and growth strategy for a fast-scaling faith community</p>
             </div>
           </a>
-          <a href="/work/fvln" class="dc-card">
+          <a href="/work.html" class="dc-card">
             <div class="dc-thumb-wrap"><img loading="lazy" decoding="async" src="/business-meeting-and-financial-analysis-in-office-2026-01-07-00-49-57-utc-th.jpg" class="dc-thumb" alt="FVLN"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-build">BUILD</span>
@@ -618,7 +675,7 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
               <p class="dc-desc">Go-to-market positioning and brand strategy for a luxury property brand</p>
             </div>
           </a>
-          <a href="/work/new-life-church" class="dc-card">
+          <a href="/work.html" class="dc-card">
             <div class="dc-thumb-wrap"><img loading="lazy" decoding="async" src="/crowds-the-audience-at-a-concert-of-an-oratorium-2026-01-06-08-59-53-utc-th.jpg" class="dc-thumb" alt="New Life Church"></div>
             <div class="dc-card-body">
               <span class="dc-label dc-label-build">BUILD</span>
@@ -685,272 +742,63 @@ body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);o
   <a href="#contact" class="nav-cta">Start a conversation</a>
 </nav>
 
+
+
 <!-- HERO -->
-<section class="work-hero">
-  <canvas id="work-hero-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
-  <div class="work-hero-left" style="position:relative;z-index:2;">
-    <div class="work-hero-eyebrow">Selected Work</div>
-    <h1>What<br>We've<br><span>Built.</span></h1>
-  </div>
-  <div class="work-hero-right" style="position:relative;z-index:2;">
-    <p class="work-hero-sub">
-      Four engagements. Four different problems.<br>
-      <strong>One approach</strong> — fix the structure, then grow.
-    </p>
-    <div class="work-count-row">
-      <span class="count-pill blue">4 Case Studies</span>
-      <span class="count-pill sky">3 Continents</span>
-      <span class="count-pill coral">6+ Industries</span>
-    </div>
+<section class="cs-hero">
+  <img loading="eager" src="/work-fvln-hero.jpg" alt="A 70-Year Firm. Reborn.">
+  <div class="cs-hero-gradient"></div>
+  <div class="cs-hero-content">
+    <div class="cs-breadcrumb"><a href="/work">Work</a> / Ferreira Venter Laws &amp; Nel</div>
+    <div class="cs-num">02 — 2025</div>
+    <div class="cs-tag" style="color:#2ecc8f">Organisational Repositioning · Brand Strategy</div>
+    <h1 class="cs-h1">A 70-Year Firm. Reborn.</h1>
+    <div class="cs-client">Ferreira Venter Laws &amp; Nel · Audit &amp; Accounting · South Africa</div>
   </div>
 </section>
-<div class="hero-stripe"></div>
 
-<!-- FILTER -->
-<div class="filter-bar">
-  <button class="filter-btn active" onclick="filterWork('all',this)">All Work</button>
-  <button class="filter-btn" onclick="filterWork('build',this)">BUILD</button>
-  <button class="filter-btn" onclick="filterWork('lead',this)">LEAD</button>
-  <button class="filter-btn" onclick="filterWork('grow',this)">GROW</button>
+<div class="cs-body">
+
+  <!-- CONTEXT -->
+  <div class="cs-section">
+    <div class="cs-section-label">Context</div>
+    <p class="cs-section-p">Ferreira Venter Laws &amp; Nel · Audit &amp; Accounting · South Africa came to Catalyst for organisational repositioning · brand strategy.</p>
+  </div>
+
+  <!-- THE REAL PROBLEM -->
+  <div class="cs-section">
+    <div class="cs-section-label">The Real Problem</div>
+    <h2 class="cs-section-h">The Problem Behind the Brand.</h2>
+    <p class="cs-section-p">Ferreira Venter Laws &amp; Nel had 70 years of expertise and reputation — but their visual identity and digital presence had not kept pace with the modern professional landscape. The firm was limiting its own growth.</p>
+  </div>
+
+  <!-- APPROACH -->
+  <div class="cs-section">
+    <div class="cs-section-label">Our Approach</div>
+    <p class="cs-section-p">We undertook a full strategic repositioning — auditing the existing brand, developing new positioning that honoured legacy while signalling forward momentum, and building a brand coherence methodology across all five partners and three practice areas.</p>
+    <div class="cs-tags"><span class="mtag">Brand Audit</span><span class="mtag">Positioning Strategy</span><span class="mtag">Messaging Framework</span><span class="mtag">Visual Identity Direction</span><span class="mtag">Brand Coherence Methodology</span><span class="mtag">Voice &amp; Tone Guidelines</span></div>
+    <div class="cs-svc-pill" style="background:linear-gradient(135deg,#0077FF,#00C3FF)">GROW</div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="cs-section">
+    <div class="cs-section-label">Result</div>
+    <div class="cs-stats"><div class="cs-stat"><div class="cs-stat-n" style="color:#2ecc8f">70yr</div><div class="cs-stat-l">Legacy Repositioned for the Future</div></div><div class="cs-stat"><div class="cs-stat-n" style="color:#2ecc8f">2</div><div class="cs-stat-l">Target Audiences Unified</div></div><div class="cs-stat"><div class="cs-stat-n" style="color:#2ecc8f">4</div><div class="cs-stat-l">Strategic Goals Delivered</div></div></div>
+  </div>
+
 </div>
 
-<!-- CASES -->
-<div class="cases-list" id="cases-list">
-
-
-  <!-- 01 — grow-church -->
-  <a href="/work/grow-church" class="case-row right-card" data-tags="build lead grow" style="margin-top:3px">
-    <div class="case-img-wrap">
-      <img loading="lazy" class="case-img case-img-bw" src="/case-grow-church.jpg" alt="" style="object-position:center 40%">
-      <img loading="lazy" class="case-img case-img-colour" src="/case-grow-church.jpg" alt="" style="object-position:center 40%">
-    </div>
-    <div class="case-overlay"></div>
-    <div class="case-content">
-      <div class="case-num">01 — 2023–2024</div>
-      <div class="case-tag" style="color:#39ff14">Creative Direction · Org Design · Team Systems</div>
-      <div class="case-title">Vision Into Structure. Chaos Into Clarity.</div>
-      <div class="case-desc">End-to-end church transformation — from creative direction and communications strategy to organisational design and team scaling across multiple campuses.</div>
-      <div class="case-stats-row">
-        <div><div class="cs-num" style="color:#39ff14">40+</div><div class="cs-lbl">Campaigns Led</div></div>
-        <div><div class="cs-num" style="color:#fff">4+</div><div class="cs-lbl">Staff Hired</div></div>
-        <div><div class="cs-num" style="color:#fff">Multi</div><div class="cs-lbl">Campus Model</div></div>
-      </div>
-      <div class="case-cta">View Case Study</div>
-    </div>
-  </a>
-
-  <!-- 02 — fvln -->
-  <a href="/work/fvln" class="case-row left-card" data-tags="grow build" style="margin-top:3px">
-    <div class="case-img-wrap">
-      <img loading="lazy" class="case-img case-img-bw" src="/case-fvln.jpg" alt="" style="object-position:center 35%">
-      <img loading="lazy" class="case-img case-img-colour" src="/case-fvln.jpg" alt="" style="object-position:center 35%">
-    </div>
-    <div class="case-overlay"></div>
-    <div class="case-content">
-      <div class="case-num">02 — 2025</div>
-      <div class="case-tag" style="color:#2ecc8f">Organisational Repositioning · Brand Strategy</div>
-      <div class="case-title">A 70-Year Firm. Reborn.</div>
-      <div class="case-desc">From regional accounting firm to national destination employer — a full strategic repositioning for Ferreira Venter Laws & Nel that honoured 70 years of legacy while signalling forward momentum.</div>
-      <div class="case-stats-row">
-        <div><div class="cs-num" style="color:#2ecc8f">70yr</div><div class="cs-lbl">Legacy Repositioned</div></div>
-        <div><div class="cs-num" style="color:#fff">2</div><div class="cs-lbl">Audiences Unified</div></div>
-        <div><div class="cs-num" style="color:#fff">4</div><div class="cs-lbl">Strategic Goals</div></div>
-      </div>
-      <div class="case-cta">View Case Study</div>
-    </div>
-  </a>
-
-  <!-- 03 — indigo-oak -->
-  <a href="/work/indigo-oak" class="case-row right-card" data-tags="grow" style="margin-top:3px">
-    <div class="case-img-wrap">
-      <img loading="lazy" class="case-img case-img-bw" src="/case-indigo-oak.jpg" alt="" style="object-position:center 40%">
-      <img loading="lazy" class="case-img case-img-colour" src="/case-indigo-oak.jpg" alt="" style="object-position:center 40%">
-    </div>
-    <div class="case-overlay"></div>
-    <div class="case-content">
-      <div class="case-num">03 — 2025</div>
-      <div class="case-tag" style="color:#c9a84c">Brand Strategy · Identity Design</div>
-      <div class="case-title">Building a Brand From Nothing.</div>
-      <div class="case-desc">A full brand identity — from positioning strategy and voice architecture to visual system and packaging design — for a luxury personalised gifting company entering a $47B market.</div>
-      <div class="case-stats-row">
-        <div><div class="cs-num" style="color:#c9a84c">$47B</div><div class="cs-lbl">Market Entered</div></div>
-        <div><div class="cs-num" style="color:#fff">0→1</div><div class="cs-lbl">Built From Scratch</div></div>
-        <div><div class="cs-num" style="color:#fff">Full</div><div class="cs-lbl">Brand System</div></div>
-      </div>
-      <div class="case-cta">View Case Study</div>
-    </div>
-  </a>
-
-  <!-- 04 — new-life-church -->
-  <a href="/work/new-life-church" class="case-row left-card" data-tags="build lead" style="margin-top:3px">
-    <div class="case-img-wrap">
-      <img loading="lazy" class="case-img case-img-bw" src="/case-new-life-church.jpg" alt="" style="object-position:center 40%">
-      <img loading="lazy" class="case-img case-img-colour" src="/case-new-life-church.jpg" alt="" style="object-position:center 40%">
-    </div>
-    <div class="case-overlay"></div>
-    <div class="case-content">
-      <div class="case-num">04 — 2024</div>
-      <div class="case-tag" style="color:#a855f7">Team Design · Operational Scale</div>
-      <div class="case-title">12 People. 40+ Strong. Built to Last.</div>
-      <div class="case-desc">Scaling a worship and creative team from 12 to 40+ members while building every system, structure, and cultural framework required to sustain that growth.</div>
-      <div class="case-stats-row">
-        <div><div class="cs-num" style="color:#a855f7">3×</div><div class="cs-lbl">Team Growth</div></div>
-        <div><div class="cs-num" style="color:#fff">40+</div><div class="cs-lbl">Stable Members</div></div>
-        <div><div class="cs-num" style="color:#fff">1</div><div class="cs-lbl">Culture Handbook</div></div>
-      </div>
-      <div class="case-cta">View Case Study</div>
-    </div>
-  </a>
-
-
+<div class="cs-nav-footer">
+  <a href="/work" class="cs-back-link">← Back to all work</a>
 </div>
 
 <!-- FOOTER -->
-<div class="work-footer" id="contact">
+<div class="work-footer" id="contact" style="margin-top:40px">
   <h2>Ready to be our<br>next <span>success story?</span></h2>
   <p>Tell us where you are. We'll tell you what we'd do first.</p>
   <a href="/" class="btn-primary">Start the Conversation</a>
 </div>
 
-<script>
-
-function filterWork(tag,btn){
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.case-row').forEach(row=>{
-    const show=tag==='all'||row.dataset.tags.includes(tag);
-    row.style.opacity=show?'1':'0.15';
-    row.style.pointerEvents=show?'':'none';
-    row.style.transition='opacity 0.4s';
-  });
-  setTimeout(()=>{
-    document.querySelectorAll('.case-row').forEach(row=>{
-      if(tag==='all'||row.dataset.tags.includes(tag)) row.style.pointerEvents='';
-    });
-  },400);
-}
-
-/* ── WORK PAGE HERO CANVAS ── */
-(function(){
-  const canvas = document.getElementById('work-hero-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, t = 0;
-  let mouse = {x:0.6, y:0.4}, tM = {x:0.6, y:0.4};
-
-  window.addEventListener('mousemove', e => {
-    tM.x = e.clientX / W;
-    tM.y = e.clientY / H;
-  });
-
-  const orbs = [
-    // Cobalt bloom — top right
-    { cx:0.75, cy:0.25, rx:0.20, ry:0.15, r:0.55,
-      freq:{x:0.012,y:0.009}, phase:{x:0,y:1.5},
-      color:'rgba(254,167,53,', peak:0.55, mx:0.08, my:0.06 },
-    // Sky — centre right
-    { cx:0.85, cy:0.65, rx:0.14, ry:0.16, r:0.40,
-      freq:{x:0.009,y:0.014}, phase:{x:2.2,y:0.4},
-      color:'rgba(254,114,53,', peak:0.48, mx:0.06, my:0.10 },
-    // Cobalt — top left faint
-    { cx:0.15, cy:0.20, rx:0.10, ry:0.08, r:0.30,
-      freq:{x:0.015,y:0.011}, phase:{x:1.0,y:2.8},
-      color:'rgba(0,195,255,', peak:0.22, mx:0.05, my:0.06 },
-    // Coral accent — bottom right
-    { cx:0.90, cy:0.85, rx:0.08, ry:0.09, r:0.28,
-      freq:{x:0.018,y:0.013}, phase:{x:3.5,y:1.2},
-      color:'rgba(254,114,53,', peak:0.28, mx:0.04, my:0.05 },
-    // Wide diffuse sky
-    { cx:0.60, cy:0.50, rx:0.22, ry:0.18, r:0.70,
-      freq:{x:0.005,y:0.004}, phase:{x:4.0,y:0.8},
-      color:'rgba(0,195,255,', peak:0.12, mx:0.03, my:0.03 },
-    // Amber warm — bottom left
-    { cx:0.10, cy:0.80, rx:0.07, ry:0.08, r:0.22,
-      freq:{x:0.016,y:0.012}, phase:{x:0.5,y:3.5},
-      color:'rgba(254,167,53,', peak:0.20, mx:0.04, my:0.05 },
-  ];
-
-  function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    t++;
-    mouse.x += (tM.x - mouse.x) * 0.04;
-    mouse.y += (tM.y - mouse.y) * 0.04;
-
-    orbs.forEach(o => {
-      const bx = o.cx + Math.sin(t * o.freq.x + o.phase.x) * o.rx;
-      const by = o.cy + Math.cos(t * o.freq.y + o.phase.y) * o.ry;
-      const px = (bx + (mouse.x - 0.5) * o.mx) * W;
-      const py = (by + (mouse.y - 0.5) * o.my) * H;
-      const rad = o.r * Math.max(W, H);
-      const g = ctx.createRadialGradient(px, py, 0, px, py, rad);
-      g.addColorStop(0,   o.color + o.peak + ')');
-      g.addColorStop(0.4, o.color + (o.peak * 0.25) + ')');
-      g.addColorStop(1,   o.color + '0)');
-      ctx.fillStyle = g;
-      ctx.beginPath(); ctx.arc(px, py, rad, 0, Math.PI * 2); ctx.fill();
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', resize);
-  resize(); draw();
-})();
-
-/* ── CASE ROW SCROLL REVEAL ── */
-(function(){
-  const rows = document.querySelectorAll('.case-row');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        // slight stagger between rows
-        const delay = 0;
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, delay);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
-
-  rows.forEach(row => observer.observe(row));
-})();
-
-
-/* ── H1 CHARACTER SPLIT ANIMATION ── */
-(function(){
-  const h1 = document.querySelector('.work-hero h1');
-  if(!h1) return;
-  let delay = 0.3;
-  function splitNode(node) {
-    if(node.nodeType === 3) {
-      const frag = document.createDocumentFragment();
-      node.textContent.split('').forEach(ch => {
-        const s = document.createElement('span');
-        s.className = 'hero-word-char';
-        s.style.transitionDelay = delay.toFixed(2) + 's';
-        s.textContent = ch === ' ' ? ' ' : ch;
-        delay += 0.038;
-        frag.appendChild(s);
-      });
-      node.parentNode.replaceChild(frag, node);
-    } else if(node.nodeType === 1 && node.tagName !== 'BR') {
-      [...node.childNodes].forEach(splitNode);
-    }
-  }
-  [...h1.childNodes].forEach(splitNode);
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    h1.querySelectorAll('.hero-word-char').forEach(c=>c.classList.add('vis'));
-  }));
-})();
-
-</script>
 <div id="nav-overlay"></div>
 <script>
 (function(){
@@ -1000,6 +848,7 @@ function filterWork(tag,btn){
   });
 })();
 
-</script>
+
+
 </body>
 </html>

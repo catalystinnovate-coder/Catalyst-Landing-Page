@@ -7,7 +7,11 @@
     { "source": "/lead", "destination": "/lead.html" },
     { "source": "/work", "destination": "/work.html" },
     { "source": "/insights", "destination": "/insights.html" },
-    { "source": "/about", "destination": "/about.html" }
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/work/grow-church", "destination": "/work-grow-church.html" },
+    { "source": "/work/fvln", "destination": "/work-fvln.html" },
+    { "source": "/work/indigo-oak", "destination": "/work-indigo-oak.html" },
+    { "source": "/work/new-life-church", "destination": "/work-new-life-church.html" }
   ],
   "headers": [
     {
