@@ -488,6 +488,78 @@ footer{
   will-change:transform;
 }
 </style>
+<script>
+/* Modal functions — defined early */
+function openModal(tab) {
+  const modal = document.getElementById('contact-modal');
+  const panel = document.getElementById('modal-panel');
+  if (!modal || !panel) return;
+  modal.style.display = 'flex';
+  switchTab(tab === 'form' ? 'form' : 'cal');
+  document.body.style.overflow = 'hidden';
+  // force reflow then animate
+  panel.style.transition = 'none';
+  panel.style.transform = 'translateY(32px)';
+  panel.style.opacity = '0';
+  panel.offsetHeight; // force reflow
+  panel.style.transition = 'transform 0.45s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease';
+  panel.style.transform = 'translateY(0)';
+  panel.style.opacity = '1';
+}
+function closeModal() {
+  const modal = document.getElementById('contact-modal');
+  const panel = document.getElementById('modal-panel');
+  if (!modal || !panel) return;
+  panel.style.transform = 'translateY(32px)';
+  panel.style.opacity = '0';
+  document.body.style.overflow = '';
+  setTimeout(() => { modal.style.display = 'none'; }, 400);
+}
+function switchTab(tab) {
+  const formPane = document.getElementById('pane-form');
+  const calPane  = document.getElementById('pane-cal');
+  const tabForm  = document.getElementById('tab-form');
+  const tabCal   = document.getElementById('tab-cal');
+  if (!formPane) return;
+  if (tab === 'form') {
+    formPane.style.display = 'block'; calPane.style.display = 'none';
+    tabForm.style.color = '#0077FF'; tabForm.style.borderBottomColor = '#0077FF';
+    tabCal.style.color  = '#6b7280'; tabCal.style.borderBottomColor  = 'transparent';
+  } else {
+    formPane.style.display = 'none'; calPane.style.display = 'block';
+    tabForm.style.color = '#6b7280'; tabForm.style.borderBottomColor = 'transparent';
+    tabCal.style.color  = '#0077FF'; tabCal.style.borderBottomColor  = '#0077FF';
+    if (!window._calLoaded) {
+      window._calLoaded = true;
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://assets.calendly.com/assets/external/widget.css';
+      document.head.appendChild(link);
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.onload = () => {
+        const ph = document.getElementById('cal-placeholder');
+        if (ph) ph.style.display = 'none';
+        Calendly.initInlineWidget({
+          url: 'https://calendly.com/catalystinnovate/30min',
+          parentElement: document.getElementById('pane-cal'),
+          prefill: {}, utm: {}
+        });
+      };
+      document.head.appendChild(script);
+    }
+  }
+}
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+});
+</script>
 </head>
 <body>
 
@@ -624,8 +696,12 @@ footer{
         </a>
       </div>
     </li>
+    <li class="sep" aria-hidden="true">·</li>
+    <li>
+      <a href="/#contact" onclick="if(window.openModal){openModal();return false;}" class="nav-link">Contact</a>
+    </li>
   </ul>
-  <a href="#contact" class="nav-cta">Start a conversation</a>
+  <a href="/#contact" onclick="openModal();return false;" class="nav-cta">Book an intro call</a>
 </nav>
 
 <!-- HERO -->
@@ -912,5 +988,171 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 })();
 
 </script>
+<!-- CONTACT MODAL -->
+<div id="contact-modal" style="
+  display:none;
+  position:fixed;inset:0;z-index:9999;
+  align-items:center;justify-content:center;
+  padding:20px;
+  box-sizing:border-box;
+">
+  <!-- backdrop -->
+  <div id="modal-backdrop" onclick="closeModal()" style="
+    position:absolute;inset:0;
+    background:rgba(10,10,20,0.85);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  "></div>
+
+  <!-- modal panel -->
+  <div id="modal-panel" style="
+    position:relative;z-index:2;
+    background:#fff;
+    border-radius:20px;
+    width:100%;max-width:780px;
+    max-height:90vh;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    box-shadow:0 40px 120px rgba(0,0,0,0.4);
+    transform:translateY(32px);opacity:0;
+  ">
+    <!-- top bar -->
+    <div style="
+      display:flex;align-items:center;justify-content:space-between;
+      padding:28px 32px 20px;
+      border-bottom:1px solid #f0f0f0;
+    ">
+      <div>
+        <div style="font-family:'Barlow',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#0077FF;margin-bottom:6px;">Let's Talk</div>
+        <div style="font-family:'Barlow',sans-serif;font-size:22px;font-weight:600;color:#0d0d14;line-height:1.2;letter-spacing:-0.01em;">Start the Conversation</div>
+      </div>
+      <button onclick="closeModal()" style="
+        width:40px;height:40px;border-radius:50%;
+        background:#f4f6f9;border:none;cursor:pointer;
+        display:flex;align-items:center;justify-content:center;
+        font-size:18px;color:#6b7280;
+        transition:background 0.2s;
+      " onmouseover="this.style.background='#e8eaf0'" onmouseout="this.style.background='#f4f6f9'">✕</button>
+    </div>
+
+    <!-- tabs -->
+    <div style="display:flex;border-bottom:1px solid #f0f0f0;">
+      <button id="tab-form" onclick="switchTab('form')" style="
+        flex:1;padding:14px;
+        font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;
+        letter-spacing:0.12em;text-transform:uppercase;
+        border:none;cursor:pointer;
+        background:#fff;color:#0077FF;
+        border-bottom:2px solid #0077FF;
+        transition:all 0.2s;
+      ">Send a Message</button>
+      <button id="tab-cal" onclick="switchTab('cal')" style="
+        flex:1;padding:14px;
+        font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;
+        letter-spacing:0.12em;text-transform:uppercase;
+        border:none;cursor:pointer;
+        background:#fff;color:#6b7280;
+        border-bottom:2px solid transparent;
+        transition:all 0.2s;
+      ">Book a Call</button>
+    </div>
+
+    <!-- form tab -->
+    <div id="pane-form" style="padding:32px;overflow-y:auto;">
+      <form id="contact-form" onsubmit="submitForm(event)">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div>
+            <label style="font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;display:block;margin-bottom:6px;">Name</label>
+            <input type="text" name="name" required placeholder="Your full name" style="
+              width:100%;padding:12px 16px;
+              border:1.5px solid #e8eaf0;border-radius:10px;
+              font-family:'Barlow',sans-serif;font-size:15px;color:#0d0d14;
+              outline:none;transition:border-color 0.2s;background:#fff;
+            " onfocus="this.style.borderColor='#0077FF'" onblur="this.style.borderColor='#e8eaf0'">
+          </div>
+          <div>
+            <label style="font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;display:block;margin-bottom:6px;">Email</label>
+            <input type="email" name="email" required placeholder="your@email.com" style="
+              width:100%;padding:12px 16px;
+              border:1.5px solid #e8eaf0;border-radius:10px;
+              font-family:'Barlow',sans-serif;font-size:15px;color:#0d0d14;
+              outline:none;transition:border-color 0.2s;background:#fff;
+            " onfocus="this.style.borderColor='#0077FF'" onblur="this.style.borderColor='#e8eaf0'">
+          </div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;display:block;margin-bottom:6px;">Company</label>
+          <input type="text" name="company" placeholder="Your company name" style="
+            width:100%;padding:12px 16px;
+            border:1.5px solid #e8eaf0;border-radius:10px;
+            font-family:'Barlow',sans-serif;font-size:15px;color:#0d0d14;font-weight:300;
+            outline:none;transition:border-color 0.2s;background:#fff;
+          " onfocus="this.style.borderColor='#0077FF'" onblur="this.style.borderColor='#e8eaf0'">
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;display:block;margin-bottom:6px;">What are you working on?</label>
+          <select name="service" style="
+            width:100%;padding:12px 16px;
+            border:1.5px solid #e8eaf0;border-radius:10px;
+            font-family:'Barlow',sans-serif;font-size:15px;color:#0d0d14;
+            outline:none;background:#fff;cursor:pointer;
+          ">
+            <option value="">Select a service area</option>
+            <option value="build">BUILD — Organisational Design & Operations</option>
+            <option value="lead">LEAD — Leadership & Culture</option>
+            <option value="grow">GROW — Marketing & Growth Strategy</option>
+            <option value="intensive">The Catalyst Intensive (all three)</option>
+            <option value="unsure">Not sure yet — let's talk</option>
+          </select>
+        </div>
+        <div style="margin-bottom:24px;">
+          <label style="font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;display:block;margin-bottom:6px;">Tell us where you are</label>
+          <textarea name="message" required rows="4" placeholder="What's the biggest challenge your business is facing right now?" style="
+            width:100%;padding:12px 16px;
+            border:1.5px solid #e8eaf0;border-radius:10px;
+            font-family:'Barlow',sans-serif;font-size:15px;color:#0d0d14;
+            outline:none;resize:vertical;transition:border-color 0.2s;background:#fff;
+          " onfocus="this.style.borderColor='#0077FF'" onblur="this.style.borderColor='#e8eaf0'"></textarea>
+        </div>
+        <button type="submit" id="submit-btn" style="
+          width:100%;padding:16px;
+          background:linear-gradient(135deg,#0077FF,#00C3FF);
+          color:#fff;border:none;border-radius:100px;cursor:pointer;
+          font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;
+          letter-spacing:0.04em;
+          transition:opacity 0.2s,transform 0.2s;
+        " onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+          Send Message
+        </button>
+        <div style="text-align:center;margin-top:14px;">
+          <a href="mailto:info@thecatalystinnovation.com" style="font-family:'Barlow',sans-serif;font-size:13px;color:#9ca3af;text-decoration:none;">
+            Or email us directly at info@thecatalystinnovation.com
+          </a>
+        </div>
+        <div id="form-success" style="display:none;text-align:center;padding:20px 0;">
+          <div style="font-family:'Bebas Neue',cursive;font-size:32px;color:#0077FF;margin-bottom:8px;">Message Sent.</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:15px;color:#6b7280;">We'll be in touch within 24 hours.</div>
+        </div>
+      </form>
+    </div>
+
+    <!-- calendly tab -->
+    <div id="pane-cal" style="display:none;height:650px;">
+      <div id="cal-placeholder" style="
+        display:flex;align-items:center;justify-content:center;
+        height:100%;flex-direction:column;gap:16px;
+        font-family:'Barlow',sans-serif;color:#6b7280;
+      ">
+        <div style="width:32px;height:32px;border:2px solid #0077FF;border-top-color:transparent;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+        <div style="font-size:14px;">Loading calendar...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes spin { to { transform:rotate(360deg); } }
+#contact-modal.open { display:flex; }
+</style>
 </body>
 </html>
