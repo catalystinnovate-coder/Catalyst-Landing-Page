@@ -4,11 +4,12 @@
 
 <script>
 /* Modal functions — defined early */
-function openModal() {
+function openModal(tab) {
   const modal = document.getElementById('contact-modal');
   const panel = document.getElementById('modal-panel');
   if (!modal || !panel) return;
   modal.style.display = 'flex';
+  switchTab(tab === 'form' ? 'form' : 'cal');
   document.body.style.overflow = 'hidden';
   // force reflow then animate
   panel.style.transition = 'none';
@@ -59,8 +60,53 @@ function switchTab(tab) {
           prefill: {}, utm: {}
         });
       };
+      script.onerror = calFallback;
+      setTimeout(function() {
+        const pane = document.getElementById('pane-cal');
+        if (pane && !pane.querySelector('iframe')) calFallback();
+      }, 10000);
       document.head.appendChild(script);
     }
+  }
+}
+function calFallback() {
+  const ph = document.getElementById('cal-placeholder');
+  if (!ph) return;
+  ph.style.display = 'flex';
+  ph.innerHTML = '<div style="font-size:15px;text-align:center;">The calendar did not load.</div>' +
+    '<a href="https://calendly.com/catalystinnovate/30min" target="_blank" rel="noopener" style="font-size:15px;font-weight:600;color:#0077FF;text-decoration:none;">Book directly on Calendly</a>';
+}
+async function submitForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('submit-btn');
+  const success = document.getElementById('form-success');
+  let err = document.getElementById('form-error');
+  if (!err) {
+    err = document.createElement('div');
+    err.id = 'form-error';
+    err.style.cssText = "display:none;text-align:center;margin-top:14px;font-family:'Barlow',sans-serif;font-size:14px;color:#6b7280;";
+    btn.insertAdjacentElement('afterend', err);
+  }
+  err.style.display = 'none';
+  const label = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!res.ok) throw new Error('Formspree ' + res.status);
+    Array.from(form.children).forEach(function(c) { if (c !== success) c.style.display = 'none'; });
+    success.style.display = 'block';
+    form.reset();
+  } catch (ex) {
+    err.textContent = 'Something went wrong sending your message. Please email info@thecatalystinnovation.com directly.';
+    err.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = label;
   }
 }
 function scrollToSection(id) {
@@ -73,10 +119,28 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+<script>
+/* ── NEWSLETTER (reused from insights.html) ── */
+function subscribeNewsletter() {
+  const email = document.getElementById('nl-email').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  window.location.href = `mailto:info@thecatalystinnovation.com?subject=Newsletter Subscription&body=Please add me to the Catalyst Insights newsletter.%0A%0AEmail: ${email}`;
+}
+</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catalyst Innovation Solutions</title>
+<title>Brand Strategy, Organisational Design and Leadership Consultants | Catalyst Innovation Solutions</title>
+<meta name="description" content="Catalyst Innovation Solutions partners with bold founders and growing companies to build the internal systems that make sustainable growth possible. Organisational design, leadership development, and growth strategy for founder-led businesses.">
+<meta property="og:title" content="Brand Strategy, Organisational Design and Leadership Consultants | Catalyst Innovation Solutions">
+<meta property="og:description" content="Catalyst Innovation Solutions partners with bold founders and growing companies to build the internal systems that make sustainable growth possible. Organisational design, leadership development, and growth strategy for founder-led businesses.">
+<meta property="og:image" content="/logo-black.svg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thecatalystinnovation.com/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Brand Strategy, Organisational Design and Leadership Consultants | Catalyst Innovation Solutions">
+<meta name="twitter:description" content="Catalyst Innovation Solutions partners with bold founders and growing companies to build the internal systems that make sustainable growth possible. Organisational design, leadership development, and growth strategy for founder-led businesses.">
+<meta name="twitter:image" content="/logo-black.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -760,6 +824,98 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
 
 
 
+
+/* ── THINKING SECTION (reused from insights.html) ── */
+.meta-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;padding:5px 12px;border-radius:100px;}
+.tag-grow{background:rgba(0,119,255,0.08);color:var(--cobalt);}
+.tag-build{background:rgba(254,114,53,0.08);color:var(--coral);}
+.tag-lead{background:rgba(168,85,247,0.08);color:#7c3aed;}
+.tag-article{background:rgba(0,0,0,0.05);color:var(--muted);}
+.tag-thought{background:rgba(0,195,255,0.08);color:#0088bb;}
+.tag-framework{background:rgba(254,167,53,0.08);color:#b86000;}
+.meta-date{font-size:12px;color:var(--muted);font-weight:300;}
+/* ── ARTICLE GRID ── */
+.articles-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;padding:2px;
+  background:var(--cream);
+}
+.article-card{
+  background:var(--white);
+  border-radius:0;
+  cursor:pointer;
+  transition:transform 0.3s,box-shadow 0.3s;
+  position:relative;overflow:hidden;
+}
+.article-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,119,255,0.09);z-index:2;}
+.article-card::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.article-card.grow::before{background:linear-gradient(90deg,var(--cobalt),var(--sky));}
+.article-card.build::before{background:linear-gradient(90deg,var(--coral),var(--amber));}
+.article-card.lead::before{background:linear-gradient(90deg,#7c3aed,#a855f7);}
+.article-card:hover::before{transform:scaleX(1);}
+
+.article-img{
+  height:200px;overflow:hidden;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.article-img-bg{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',cursive;font-size:100px;
+  opacity:0.05;letter-spacing:0.02em;
+  transition:transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.article-card:hover .article-img-bg{transform:scale(1.08);}
+.article-body{padding:32px;}
+.article-meta{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+.article-title{font-family:'Bebas Neue',cursive;font-size:clamp(22px,2.5vw,30px);line-height:1.1;color:var(--text);margin-bottom:12px;transition:color 0.3s;}
+.article-card:hover .article-title{background:linear-gradient(135deg,var(--cobalt),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.article-excerpt{font-size:14px;font-weight:300;line-height:1.7;color:var(--muted);margin-bottom:24px;}
+.article-footer{display:flex;align-items:center;justify-content:space-between;}
+.article-author{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text);}
+.article-read-more{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cobalt);display:flex;align-items:center;gap:4px;}
+.article-read-more::after{content:'→';}
+/* ── NEWSLETTER ── */
+.newsletter{
+  background:var(--dark);padding:100px 80px;
+  position:relative;overflow:hidden;text-align:center;
+}
+.newsletter::before{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:600px;height:500px;background:radial-gradient(ellipse,rgba(0,195,255,0.12) 0%,transparent 65%);border-radius:50%;pointer-events:none;}
+.newsletter::after{content:'';position:absolute;bottom:-100px;right:-80px;width:400px;height:400px;background:radial-gradient(ellipse,rgba(254,114,53,0.08) 0%,transparent 65%);border-radius:50%;pointer-events:none;}
+.newsletter-inner{position:relative;z-index:2;max-width:560px;margin:0 auto;}
+.newsletter-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--cobalt);margin-bottom:20px;}
+.newsletter h2{font-family:'Bebas Neue',cursive;font-size:clamp(44px,6vw,80px);line-height:0.95;color:#fff;margin-bottom:20px;}
+.newsletter h2 span{background:linear-gradient(135deg,var(--cobalt),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.newsletter p{font-size:16px;font-weight:300;line-height:1.7;color:rgba(255,255,255,0.5);margin-bottom:36px;}
+.email-form{display:flex;gap:12px;max-width:480px;margin:0 auto;}
+.email-input{
+  flex:1;padding:14px 20px;
+  background:rgba(255,255,255,0.06);
+  border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:100px;color:#fff;
+  font-family:'Barlow',sans-serif;font-size:15px;
+  outline:none;transition:border-color 0.2s;
+}
+.email-input::placeholder{color:rgba(255,255,255,0.3);}
+.email-input:focus{border-color:var(--cobalt);}
+.email-btn{
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:#fff;background:linear-gradient(135deg,var(--cobalt),var(--sky));
+  padding:14px 28px;border:none;border-radius:100px;cursor:pointer;
+  white-space:nowrap;transition:opacity 0.2s;
+}
+.email-btn:hover{opacity:0.85;}
+
+@media (max-width: 768px) {
+  .articles-grid { grid-template-columns: 1fr; }
+  .newsletter { padding: 80px 24px; }
+  .email-form { flex-direction: column; }
+}
 </style>
 </head>
 <body>
@@ -777,11 +933,11 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
             <span class="svc-subhead">Organisational Design &amp; Operations</span>
             <p class="svc-desc">The internal engine. Structure, systems, and operational infrastructure for founder-led businesses ready to scale.</p>
             <div class="svc-divider"></div>
-            <a href="/build" class="svc-link">Org Structure &amp; Team Design</a>
-            <a href="/build" class="svc-link">Operational Systems &amp; SOPs</a>
-            <a href="/build" class="svc-link">Financial Controls</a>
-            <a href="/build" class="svc-link">Hiring Frameworks</a>
-            <a href="/build" class="svc-link">Fractional COO</a>
+            <a href="/build#org-structure" class="svc-link">Org Structure &amp; Team Design</a>
+            <a href="/build#operational-systems" class="svc-link">Operational Systems &amp; SOPs</a>
+            <a href="/build#financial-controls" class="svc-link">Financial Controls</a>
+            <a href="/build#hiring-frameworks" class="svc-link">Hiring Frameworks</a>
+            <a href="/build#fractional-coo" class="svc-link">Fractional COO</a>
           </div>
           <div class="svc-col svc-lead">
             <div class="svc-rule"></div>
@@ -789,11 +945,11 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
             <span class="svc-subhead">Leadership &amp; Culture</span>
             <p class="svc-desc">The human layer. Management frameworks, leadership development, and culture architecture for growing teams.</p>
             <div class="svc-divider"></div>
-            <a href="/lead" class="svc-link">Management Frameworks</a>
-            <a href="/lead" class="svc-link">Leadership Development</a>
-            <a href="/lead" class="svc-link">Culture Design</a>
-            <a href="/lead" class="svc-link">Accountability Systems</a>
-            <a href="/lead" class="svc-link">Executive Advisory</a>
+            <a href="/lead#management-frameworks" class="svc-link">Management Frameworks</a>
+            <a href="/lead#leadership-development" class="svc-link">Leadership Development</a>
+            <a href="/lead#culture-design" class="svc-link">Culture Design</a>
+            <a href="/lead#accountability-systems" class="svc-link">Accountability Systems</a>
+            <a href="/lead#executive-advisory" class="svc-link">Executive Advisory</a>
           </div>
           <div class="svc-col svc-grow">
             <div class="svc-rule"></div>
@@ -801,11 +957,11 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
             <span class="svc-subhead">Marketing &amp; Growth Strategy</span>
             <p class="svc-desc">The external engine. Brand positioning, go-to-market strategy, and growth systems for ambitious founders.</p>
             <div class="svc-divider"></div>
-            <a href="/grow" class="svc-link">Brand Positioning</a>
-            <a href="/grow" class="svc-link">Go-To-Market Strategy</a>
-            <a href="/grow" class="svc-link">Content &amp; Distribution</a>
-            <a href="/grow" class="svc-link">Growth Architecture</a>
-            <a href="/grow" class="svc-link">Market Expansion</a>
+            <a href="/grow#brand-positioning" class="svc-link">Brand Positioning</a>
+            <a href="/grow#go-to-market" class="svc-link">Go-To-Market Strategy</a>
+            <a href="/grow#content-distribution" class="svc-link">Content &amp; Distribution</a>
+            <a href="/grow#growth-architecture" class="svc-link">Growth Architecture</a>
+            <a href="/grow#market-expansion" class="svc-link">Market Expansion</a>
           </div>
         </div>
         <div class="svc-footer">
@@ -827,11 +983,11 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
             </div>
           </a>
           <a href="/work.html" class="dc-card">
-            <div class="dc-thumb-wrap"><img src="/business-meeting-and-financial-analysis-in-office-2026-01-07-00-49-57-utc.jpg" class="dc-thumb" alt="FVLN"></div>
+            <div class="dc-thumb-wrap"><img src="/business-meeting-and-financial-analysis-in-office-2026-01-07-00-49-57-utc.jpg" class="dc-thumb" alt="FVLN, an audit and accounting firm established in 1954."></div>
             <div class="dc-card-body">
-              <span class="dc-label dc-label-build">BUILD</span>
+              <span class="dc-label dc-label-grow">GROW</span>
               <div class="dc-title">FVLN</div>
-              <p class="dc-desc">Go-to-market positioning and brand strategy for a luxury property brand</p>
+              <p class="dc-desc">Full rebrand and new corporate identity for an audit and accounting firm established in 1954.</p>
             </div>
           </a>
           <a href="/work.html" class="dc-card">
@@ -897,8 +1053,12 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
         </a>
       </div>
     </li>
+    <li class="sep" aria-hidden="true">·</li>
+    <li>
+      <a href="/#contact" onclick="openModal();return false;" class="nav-link">Contact</a>
+    </li>
   </ul>
-  <a href="#" onclick="openModal();return false;" class="nav-cta">Start a conversation</a>
+  <a href="/#contact" onclick="openModal();return false;" class="nav-cta">Book an intro call</a>
 </nav>
 
 <!-- fullscreen mobile overlay -->
@@ -911,7 +1071,7 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
     <li><a href="/work" onclick="closeMobileNav()">Work</a></li>
     <li><a href="/insights" onclick="closeMobileNav()">Insights</a></li>
   </ul>
-  <a href="#" onclick="openModal();return false;" class="mobile-nav-cta">Start the Conversation</a>
+  <a href="/#contact" onclick="openModal();return false;" class="mobile-nav-cta">Book an intro call</a>
 </div>
 
 <!-- HERO — full bleed -->
@@ -923,7 +1083,7 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
     <span id="word-ghost">GROW</span>
     <p class="hero-sub">Most companies don't have a growth problem.<br><strong>They have a structure problem.</strong></p>
     <div class="hero-actions">
-      <a href="#" onclick="openModal();return false;" class="btn-primary">Start the Conversation</a>
+      <a href="/#contact" onclick="openModal();return false;" class="btn-primary">Book an intro call</a>
       <a href="#services" class="btn-ghost">See What We Do</a>
     </div>
   </div>
@@ -938,6 +1098,14 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
   </div>
 </div>
 
+<!-- FEATURED CASE STUDY -->
+<section class="work" style="padding-bottom:0;">
+  <div class="work-header"><div class="section-tag">Featured Work</div><h2 class="work-title">A recent engagement.</h2></div>
+  <div style="max-width:600px;">
+    <div class="work-card"><div><div class="work-client">FVLN · Brand Strategy</div><div class="work-title-card">Rebranding an Audit Firm Established in 1954</div><p class="work-desc">Full rebrand for an audit and accounting firm: positioning, corporate identity, website and social presence.</p></div><span class="work-tag">GROW</span></div>
+  </div>
+</section>
+
 <!-- STATEMENT -->
 <section class="statement">
   <div>
@@ -946,12 +1114,12 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
   </div>
   <div class="reveal">
     <p class="statement-body">Catalyst partners with <strong>bold founders and growing companies</strong> to build the internal systems that make sustainable growth possible.</p>
-    <p class="statement-body">We don't consult from a distance. We sit inside the problem with you — until the structure holds on its own.</p>
+    <p class="statement-body">We sit inside the problem with you until the structure holds on its own.</p>
     <div class="pill-row">
       <span class="pill pill-blue">Org Design</span><span class="pill pill-sky">Leadership</span>
       <span class="pill pill-coral">Growth Strategy</span><span class="pill pill-amber">Brand</span>
     </div>
-    <a href="#" class="btn-ghost">How we work</a>
+    <a href="#services" class="btn-ghost">How we work</a>
   </div>
 </section>
 
@@ -960,18 +1128,52 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
   <canvas id="services-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
   <div class="services-header" style="position:relative;z-index:2;">
     <h2 class="services-title">Three ways we<br>help your company grow.</h2>
-    <p class="services-sub">One engagement or all three — the deeper the relationship, the more we become part of the solution.</p>
+    <p class="services-sub">Take one engagement or all three. The deeper the relationship, the more we become part of the solution.</p>
   </div>
   <div class="services-grid" style="position:relative;z-index:2;">
-    <div class="service-card"><div class="service-num">01</div><div class="service-name">BUILD</div><div class="service-label">Organisational Design & Operations</div><p class="service-desc">The internal engine. We build the structure that makes sustainable growth possible — for founders drowning in chaos who need to run like a real company.</p><ul class="service-list"><li>Org structure and team design</li><li>Hiring frameworks and onboarding</li><li>SOPs and operational protocols</li><li>Scaling from founder-led to structured</li></ul></div>
-    <div class="service-card"><div class="service-num">02</div><div class="service-name">LEAD</div><div class="service-label">Leadership & Culture</div><p class="service-desc">The human layer. We build people systems and culture that make everything else work — for leaders who have the team but not the systems to lead them at scale.</p><ul class="service-list"><li>Management frameworks</li><li>Leadership development programs</li><li>Accountability and performance systems</li><li>Executive advisory</li></ul></div>
-    <div class="service-card"><div class="service-num">03</div><div class="service-name">GROW</div><div class="service-label">Marketing & Growth Strategy</div><p class="service-desc">The external engine. Once the foundation is solid, we build visibility, leads, and market presence — for companies ready to amplify what's working inside.</p><ul class="service-list"><li>Go-to-market strategy</li><li>Brand positioning and messaging</li><li>Content and distribution systems</li><li>Growth architecture</li></ul></div>
+    <div class="service-card"><div class="service-num">01</div><div class="service-name">BUILD</div><div class="service-label">Organisational Design & Operations</div><p class="service-desc">The internal engine. We build the structure that makes sustainable growth possible, for founders drowning in chaos who need to run like a real company.</p><ul class="service-list"><li>Org structure and team design</li><li>Hiring frameworks and onboarding</li><li>SOPs and operational protocols</li><li>Scaling from founder-led to structured</li></ul></div>
+    <div class="service-card"><div class="service-num">02</div><div class="service-name">LEAD</div><div class="service-label">Leadership & Culture</div><p class="service-desc">The human layer. We build people systems and culture that make everything else work, for leaders who have the team but not the systems to lead them at scale.</p><ul class="service-list"><li>Management frameworks</li><li>Leadership development programs</li><li>Accountability and performance systems</li><li>Executive advisory</li></ul></div>
+    <div class="service-card"><div class="service-num">03</div><div class="service-name">GROW</div><div class="service-label">Marketing & Growth Strategy</div><p class="service-desc">The external engine. Once the foundation is solid, we build visibility, leads, and market presence, for companies ready to amplify what's working inside.</p><ul class="service-list"><li>Go-to-market strategy</li><li>Brand positioning and messaging</li><li>Content and distribution systems</li><li>Growth architecture</li></ul></div>
   </div>
   <!-- mobile swipe dots -->
   <div class="swipe-hint" id="service-dots">
     <div class="swipe-dot active"></div>
     <div class="swipe-dot"></div>
     <div class="swipe-dot"></div>
+  </div>
+</section>
+
+<!-- ACCENT STRIP -->
+<section class="accent-strip" id="intensive">
+  <div class="accent-strip-left"><h3>The Catalyst Intensive.</h3><p>A 90-day embedded engagement to fix structure, build systems, and unlock growth.</p></div>
+  <a href="#intensive" class="btn-dark">Learn More</a>
+</section>
+
+<!-- STATS -->
+<section class="stats-banner" style="position:relative;overflow:hidden;">
+  <canvas id="stats-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
+  <div class="stats-inner" style="position:relative;z-index:2;">
+    <div>
+      <div class="stat-block"><div class="stat-num" data-target="243">0%</div><div class="stat-label">Engagement growth · Connection Therapy Clinic</div><div class="stat-bar"><div class="stat-bar-fill" data-width="88"></div></div></div>
+      <div class="stat-block"><div class="stat-num" style="font-size:80px;">6+</div><div class="stat-label">Industries served across 3 continents</div><div class="stat-bar"><div class="stat-bar-fill coral" data-width="60"></div></div></div>
+    </div>
+    <div class="stats-right">
+      <h2>We don't deliver reports.<br>We deliver results.</h2>
+      <p>Our engagements are embedded, not advisory. We stay until the structure holds and the growth is real.</p>
+      <a href="/work" class="btn-white">See Our Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL GLASS SECTION -->
+<section class="editorial">
+  <div class="editorial-img-wrap">
+    <img id="editorial-img" src="" alt="Catalyst team at work">
+  </div>
+  <div class="editorial-glass-strips" id="glass-strips"></div>
+  <div class="editorial-text">
+    <h2>We accelerate<br>what's already possible.</h2>
+    <p>Catalyst Innovation Solutions</p>
   </div>
 </section>
 
@@ -998,57 +1200,107 @@ footer::before{content:'';display:block;height:4px;background:linear-gradient(90
 </section>
 
 
-<!-- EDITORIAL GLASS SECTION -->
-<section class="editorial">
-  <div class="editorial-img-wrap">
-    <img id="editorial-img" src="" alt="Catalyst team at work">
-  </div>
-  <div class="editorial-glass-strips" id="glass-strips"></div>
-  <div class="editorial-text">
-    <h2>We accelerate<br>what's already possible.</h2>
-    <p>Catalyst Innovation Solutions</p>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats-banner" style="position:relative;overflow:hidden;">
-  <canvas id="stats-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
-  <div class="stats-inner" style="position:relative;z-index:2;">
-    <div>
-      <div class="stat-block"><div class="stat-num" data-target="243">0%</div><div class="stat-label">Engagement growth · Connection Therapy Clinic</div><div class="stat-bar"><div class="stat-bar-fill" data-width="88"></div></div></div>
-      <div class="stat-block"><div class="stat-num" style="font-size:80px;">6+</div><div class="stat-label">Industries served across 3 continents</div><div class="stat-bar"><div class="stat-bar-fill coral" data-width="60"></div></div></div>
-    </div>
-    <div class="stats-right">
-      <h2>We don't deliver reports.<br>We deliver results.</h2>
-      <p>Our engagements are embedded, not advisory. We stay until the structure holds and the growth is real.</p>
-      <a href="/work" class="btn-white">See Our Work</a>
-    </div>
-  </div>
-</section>
-
 <!-- WORK -->
 <section class="work">
   <div class="work-header"><div class="section-tag">Selected Work</div><h2 class="work-title">What we've built.</h2></div>
   <div class="work-grid">
     <div class="work-card"><div><div class="work-client">Grow Church · Organisational Design</div><div class="work-title-card">Scaling a Church from Founder-Led to Fully Structured</div><p class="work-desc">Redesigned the org structure and leadership architecture for a growing multi-site church moving through rapid expansion.</p></div><span class="work-tag">BUILD · LEAD</span></div>
-    <div class="work-card"><div><div class="work-client">Connection Therapy Clinic · Growth</div><div class="work-title-card">243% Engagement Growth in 30 Days</div><p class="work-desc">Full brand repositioning, content strategy, and growth architecture for a therapy practice entering a new market.</p></div><span class="work-tag">GROW · BUILD</span></div>
-    <div class="work-card"><div><div class="work-client">FVLN · Brand Strategy</div><div class="work-title-card">Brand Coherence for a Multi-Partner Legal Firm</div><p class="work-desc">Developed a brand coherence methodology and visual identity system for a boutique legal firm repositioning for growth.</p></div><span class="work-tag">GROW</span></div>
-    <div class="work-card cta-card"><div><div class="work-client" style="color:rgba(255,255,255,0.65);">Ready to build?</div><div class="work-title-card" style="color:white;-webkit-text-fill-color:white;background:none;">Start the conversation with Catalyst.</div><p class="work-desc" style="color:rgba(255,255,255,0.75);">Tell us where you are. We'll tell you what we'd do first.</p></div><a href="#" onclick="openModal();return false;" class="btn-white" style="align-self:flex-start;">Get in Touch</a></div>
+    <div class="work-card"><div><div class="work-client">Connection Therapy Clinic · Growth</div><div class="work-title-card">243% Engagement Growth in 30 Days</div><p class="work-desc">Full brand repositioning, content strategy, and growth architecture for a therapy practice entering a new market.</p></div><span class="work-tag">BUILD · GROW</span></div>
+    <div class="work-card"><div><div class="work-client">FVLN · Brand Strategy</div><div class="work-title-card">Rebranding an Audit Firm Established in 1954</div><p class="work-desc">Full rebrand for an audit and accounting firm: positioning, corporate identity, website and social presence.</p></div><span class="work-tag">GROW</span></div>
   </div>
 </section>
 
-<!-- ACCENT STRIP -->
-<section class="accent-strip">
-  <div class="accent-strip-left"><h3>The Catalyst Intensive.</h3><p>A 90-day embedded engagement to fix structure, build systems, and unlock growth.</p></div>
-  <a href="#services" onclick="event.preventDefault();scrollToSection('services')" class="btn-dark">Learn More</a>
+<!-- THINKING -->
+<section class="work">
+  <div class="work-header"><div class="section-tag">Thinking</div><h2 class="work-title">Latest from the blog.</h2></div>
+  <div class="articles-grid" style="margin-top:0;">
+    <div class="article-card build" data-tags="build framework" onclick="window.location='/insights'">
+    <div class="article-img" style="background:linear-gradient(135deg,#1a0808,#2a1010);">
+      <div class="article-img-bg" style="color:#FE7235;">ORG</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(254,114,53,0.25),rgba(254,167,53,0.1));"></div>
+    </div>
+    <div class="article-body">
+      <div class="article-meta">
+        <span class="meta-tag tag-build">BUILD</span>
+        <span class="meta-tag tag-framework">Framework</span>
+        <span class="meta-date">April 2026</span>
+      </div>
+      <div class="article-title">The 5-Layer Org Design Framework Every Growing Company Needs</div>
+      <p class="article-excerpt">Most organisational design advice is either too theoretical or too generic. This is the actual framework we use with clients: five layers, in order, that determine whether your structure holds or collapses under growth.</p>
+      <div class="article-footer">
+        <div class="article-author">Maryke Fischer</div>
+        <div class="article-read-more">4 min</div>
+      </div>
+    </div>
+  </div>
+    <div class="article-card lead" data-tags="lead thought" onclick="window.location='/insights'">
+    <div class="article-img" style="background:linear-gradient(135deg,#0c0518,#180830);">
+      <div class="article-img-bg" style="color:#a855f7;">LEAD</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,0.25),rgba(168,85,247,0.1));"></div>
+    </div>
+    <div class="article-body">
+      <div class="article-meta">
+        <span class="meta-tag tag-lead">LEAD</span>
+        <span class="meta-tag tag-thought">Thought Piece</span>
+        <span class="meta-date">April 2026</span>
+      </div>
+      <div class="article-title">Why "Culture Fit" Is the Wrong Thing to Hire For</div>
+      <p class="article-excerpt">Culture fit sounds like a good idea until you realise it's often a proxy for hiring people who think like you. What growing organisations actually need is culture contribution. The distinction matters more than most leaders realise.</p>
+      <div class="article-footer">
+        <div class="article-author">Maryke Fischer</div>
+        <div class="article-read-more">3 min</div>
+      </div>
+    </div>
+  </div>
+    <div class="article-card grow" data-tags="grow article" onclick="window.location='/insights'">
+    <div class="article-img" style="background:linear-gradient(135deg,#061520,#0a2030);">
+      <div class="article-img-bg" style="color:#00C3FF;">GROW</div>
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,119,255,0.25),rgba(0,195,255,0.1));"></div>
+    </div>
+    <div class="article-body">
+      <div class="article-meta">
+        <span class="meta-tag tag-grow">GROW</span>
+        <span class="meta-tag tag-article">Article</span>
+        <span class="meta-date">March 2026</span>
+      </div>
+      <div class="article-title">Most Growth Problems Are Positioning Problems.</div>
+      <p class="article-excerpt">Most businesses we work with think they need more leads. What they actually need is to be more specific about who they serve and why they're the right choice. Positioning is a growth strategy.</p>
+      <div class="article-footer">
+        <div class="article-author">Carmen Naidoo</div>
+        <div class="article-read-more">5 min</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div style="text-align:center;margin-top:40px;"><a href="/insights" class="btn-ghost">Read all insights &#8594;</a></div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div class="newsletter-tag">Stay Sharp</div>
+    <h2>Thinking delivered<br>to your <span>inbox.</span></h2>
+    <p>No noise. One piece of thinking per month: frameworks, perspectives, and hard-won lessons from the work we're doing.</p>
+    <div class="email-form">
+      <input type="email" class="email-input" placeholder="your@email.com" id="nl-email">
+      <button class="email-btn" onclick="subscribeNewsletter()">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="work" style="padding-top:0;">
+  <div class="work-grid" style="grid-template-columns:1fr;">
+    <div class="work-card cta-card"><div><div class="work-client" style="color:rgba(255,255,255,0.65);">Ready to build?</div><div class="work-title-card" style="color:white;-webkit-text-fill-color:white;background:none;">Start the conversation with Catalyst.</div><p class="work-desc" style="color:rgba(255,255,255,0.75);">Tell us where you are. We'll tell you what we'd do first.</p></div><a href="/#contact" onclick="openModal();return false;" class="btn-white" style="align-self:flex-start;">Book an intro call</a></div>
+  </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer id="contact">
   <div class="footer-top">
     <div><div class="footer-logo">CATALYST<span>.</span></div><p class="footer-tagline">Fix the structure. Lead better. Grow with intention. Based in Pretoria. Working globally.</p></div>
-    <div><div class="footer-col-title">Services</div><ul class="footer-links"><li><a href="#">Build · Org Design</a></li><li><a href="#">Lead · Culture</a></li><li><a href="#">Grow · Marketing</a></li><li><a href="#">The Catalyst Intensive</a></li></ul></div>
-    <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="#">About</a></li><li><a href="/work">Work</a></li><li><a href="/insights">Insights</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div><div class="footer-col-title">Services</div><ul class="footer-links"><li><a href="/build">Build · Org Design</a></li><li><a href="/lead">Lead · Culture</a></li><li><a href="/grow">Grow · Marketing</a></li><li><a href="/#intensive">The Catalyst Intensive</a></li></ul></div>
+    <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="/about">About</a></li><li><a href="/work">Work</a></li><li><a href="/insights">Insights</a></li><li><a href="/#contact" onclick="openModal();return false;">Contact</a></li></ul></div>
   </div>
   <div class="footer-bottom"><span class="footer-copy">© 2026 Catalyst Innovation Solutions. All rights reserved.</span><span class="footer-geo">Pretoria · South Africa · Serving US · UK · AU</span></div>
 </footer>
@@ -1501,7 +1753,8 @@ document.getElementById('hamburger').addEventListener('click', function() {
 
     <!-- form tab -->
     <div id="pane-form" style="padding:32px;overflow-y:auto;">
-      <form id="contact-form" onsubmit="submitForm(event)">
+      <form id="contact-form" action="https://formspree.io/f/mzedajbl" method="POST" onsubmit="submitForm(event)">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
           <div>
             <label style="font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;display:block;margin-bottom:6px;">Name</label>
@@ -1540,11 +1793,11 @@ document.getElementById('hamburger').addEventListener('click', function() {
             outline:none;background:#fff;cursor:pointer;
           ">
             <option value="">Select a service area</option>
-            <option value="build">BUILD — Organisational Design & Operations</option>
-            <option value="lead">LEAD — Leadership & Culture</option>
-            <option value="grow">GROW — Marketing & Growth Strategy</option>
+            <option value="build">BUILD: Organisational Design & Operations</option>
+            <option value="lead">LEAD: Leadership & Culture</option>
+            <option value="grow">GROW: Marketing & Growth Strategy</option>
             <option value="intensive">The Catalyst Intensive (all three)</option>
-            <option value="unsure">Not sure yet — let's talk</option>
+            <option value="unsure">Not sure yet. Let's talk.</option>
           </select>
         </div>
         <div style="margin-bottom:24px;">

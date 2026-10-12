@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Established 1954. Rebuilt. | Ferreira Venter Laws &amp; Nel Case Study | Catalyst Innovation Solutions</title>
+<meta name="description" content="How Catalyst rebuilt the brand of Ferreira Venter Laws &amp; Nel, an audit and accounting firm established in 1954: positioning, corporate identity, website and social presence.">
+<meta property="og:title" content="Established 1954. Rebuilt. | Catalyst Innovation Solutions">
+<meta property="og:description" content="How Catalyst rebuilt the brand of Ferreira Venter Laws &amp; Nel, an audit and accounting firm established in 1954: positioning, corporate identity, website and social presence.">
+<meta property="og:image" content="/logo-black.svg">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://thecatalystinnovation.com/work/fvln">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Established 1954. Rebuilt. | Catalyst Innovation Solutions">
+<meta name="twitter:description" content="How Catalyst rebuilt the brand of Ferreira Venter Laws &amp; Nel, an audit and accounting firm established in 1954: positioning, corporate identity, website and social presence.">
+<meta name="twitter:image" content="/logo-black.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Aburo';src:url('fonts/Aburo/Aburo-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Aburo';src:url('fonts/Aburo/Aburo-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Glacial Indifference';src:url('fonts/glacial-indifference/GlacialIndifference-Regular.otf') format('opentype');font-weight:400;font-display:swap}
+@font-face{font-family:'Glacial Indifference';src:url('fonts/glacial-indifference/GlacialIndifference-Bold.otf') format('opentype');font-weight:700;font-display:swap}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cobalt:#0077FE;--sky:#08C3FF;--coral:#FE7234;--amber:#FEA835;
+  --white:#fff;--cream:#F8F7F4;--dark:#0d0d14;--text:#0d0d14;--muted:#6b7280;
+  --r:20px;
+
+  --ease-smooth:cubic-bezier(0.4,0,0.2,1);
+  --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+  --space-xs:0.5rem;--space-sm:1rem;--space-md:2rem;--space-lg:4rem;--space-xl:8rem;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;padding-top:88px}
+
+/* ── NAV ── */
+.site-nav{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);
+  width:calc(100% - 48px);max-width:1200px;height:64px;
+  background:#fff;border-radius:50px;
+  box-shadow:0 4px 32px rgba(0,0,0,0.12);
+  z-index:1000;display:flex;align-items:center;padding:0 8px 0 20px;
+}
+.nav-logo{display:flex;align-items:center;text-decoration:none;flex-shrink:0;line-height:0}
+.nav-links{
+  display:flex;align-items:center;list-style:none;
+  margin:0 auto;padding:0;
+}
+.nav-links>li{list-style:none;position:relative}
+.nav-links .sep{color:rgba(14,13,13,0.25);font-size:10px;user-select:none;padding:0 2px;list-style:none}
+.nav-link{
+  font-family:'Glacial Indifference',sans-serif;font-size:0.78rem;
+  text-transform:uppercase;letter-spacing:0.12em;
+  color:#0E0D0D;opacity:0.6;text-decoration:none;
+  display:inline-flex;align-items:center;gap:4px;
+  padding:22px 14px;white-space:nowrap;position:relative;transition:opacity 0.2s;
+}
+.nav-link:hover{opacity:1;color:#0E0D0D}
+.nav-link.active{color:#0077FE;opacity:1}
+.nav-chevron{width:10px;height:6px;flex-shrink:0;transition:transform 0.2s}
+.has-dropdown.open .nav-chevron{transform:rotate(180deg)}
+.nav-line{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  height:3px;border-radius:0 0 3px 3px;width:60%;
+  opacity:0;transition:opacity 0.2s;pointer-events:none;
+}
+.nav-link:hover .nav-line,.nav-link.active .nav-line{opacity:1}
+.lnk-services .nav-line{background:#0077FE;box-shadow:0 0 8px 2px rgba(0,119,254,0.4)}
+.lnk-work     .nav-line{background:#0077FE;box-shadow:0 0 8px 2px rgba(0,119,254,0.4)}
+.lnk-ins      .nav-line{background:#08C3FF;box-shadow:0 0 8px 2px rgba(8,195,255,0.4)}
+.lnk-about    .nav-line{background:#0077FE;box-shadow:0 0 8px 2px rgba(0,119,254,0.4)}
+/* ── DROPDOWN BASE (fixed) ── */
+.dropdown{
+  position:fixed;top:80px;left:50%;
+  transform:translateX(-50%) translateY(-12px);
+  width:860px;max-width:calc(100vw - 48px);
+  background:#fff;border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.15);
+  padding:40px;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.2s ease,transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  z-index:1010;
+  font-family:'Glacial Indifference',sans-serif;
+}
+.has-dropdown.open .dropdown{
+  opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;
+}
+/* ── SERVICES TRAY ── */
+.svc-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.svc-rule{height:3px;width:100%;margin-bottom:20px;border-radius:2px}
+.svc-build .svc-rule{background:#0077FE}
+.svc-lead  .svc-rule{background:#FE7234}
+.svc-grow  .svc-rule{background:#FEA835}
+.svc-label{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;
+  margin-bottom:8px;display:block;
+}
+.svc-build .svc-label{color:#0077FE}
+.svc-lead  .svc-label{color:#FE7234}
+.svc-grow  .svc-label{color:#FEA835}
+.svc-subhead{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.75rem;color:#999;text-transform:uppercase;letter-spacing:0.1em;
+  margin-bottom:14px;display:block;
+}
+.svc-desc{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.9rem;color:#444;line-height:1.7;margin-bottom:16px;
+}
+.svc-divider{height:1px;background:#eee;margin-bottom:14px}
+.svc-link{
+  display:block;font-family:'Glacial Indifference',sans-serif;
+  font-size:0.88rem;color:#666;text-decoration:none;
+  padding:5px 0;transition:color 0.15s;
+}
+.svc-build .svc-link:hover{color:#0077FE}
+.svc-lead  .svc-link:hover{color:#FE7234}
+.svc-grow  .svc-link:hover{color:#FEA835}
+.svc-footer{border-top:1px solid #eee;margin-top:28px;padding-top:18px;text-align:center}
+.svc-footer-link{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.85rem;color:#0077FE;text-decoration:none;letter-spacing:0.05em;
+}
+.svc-footer-link:hover{opacity:0.75}
+/* ── WORK / INSIGHTS TRAYS ── */
+.dropdown-cards{width:800px}
+.dc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.dc-card{
+  background:#fff;border:1px solid #eee;border-radius:12px;padding:24px;
+  text-decoration:none;display:block;
+  transition:box-shadow 0.2s,transform 0.2s;
+}
+.dc-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.1);transform:translateY(-4px)}
+.dc-label{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;
+  font-weight:700;margin-bottom:8px;display:block;
+}
+.dc-label-grow{color:#FEA835}
+.dc-label-build{color:#0077FE}
+.dc-label-lead{color:#FE7234}
+.dc-title{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:1rem;font-weight:600;color:#0E0D0D;
+  margin:8px 0;line-height:1.3;
+}
+.dc-desc{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.875rem;color:#666;line-height:1.6;
+}
+.dc-footer{border-top:1px solid #eee;padding-top:14px;text-align:left}
+.dc-footer-link{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.85rem;color:#0077FE;text-decoration:none;
+}
+.dc-footer-link:hover{opacity:0.75}
+/* ── ABOUT TRAY ── */
+.dropdown-about{width:320px;padding:8px}
+.about-nav-item{
+  display:block;text-decoration:none;
+  padding:16px;border-radius:10px;
+  transition:background 0.15s;
+}
+.about-nav-item:hover{background:rgba(0,119,254,0.05)}
+.about-nav-title{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.9rem;font-weight:700;color:#0E0D0D;
+  margin-bottom:4px;
+}
+.about-nav-sub{
+  font-family:'Glacial Indifference',sans-serif;
+  font-size:0.8rem;color:#888;
+}
+.nav-cta{
+  font-family:'Glacial Indifference',sans-serif;font-size:0.78rem;
+  text-transform:uppercase;letter-spacing:0.1em;
+  color:#fff;background:#0077FE;
+  border-radius:50px;padding:10px 20px;
+  text-decoration:none;flex-shrink:0;white-space:nowrap;
+  transition:opacity 0.2s;margin-left:16px;
+}
+.nav-cta:hover{opacity:0.85}
+#nav-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.25);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  z-index:998;opacity:0;pointer-events:none;transition:opacity 0.2s ease;
+}
+#nav-overlay.active{opacity:1;pointer-events:auto}
+/* ── WORK TRAY (thumbnails) ── */
+.dropdown-work{width:920px}
+.dropdown-work .dc-card{padding:0;overflow:hidden}
+.dropdown-work .dc-grid{margin-bottom:20px}
+.dc-thumb-wrap{overflow:hidden;height:160px;display:block;border-radius:10px 10px 0 0}
+.dc-thumb{width:100%;height:160px;object-fit:cover;display:block;border-radius:10px 10px 0 0;will-change:transform;transition:transform 0.4s ease}
+.dc-card:hover .dc-thumb{transform:scale(1.08)}
+.dc-card-body{padding:14px 20px 20px}
+/* ── INSIGHTS TRAY (horizontal editorial) ── */
+.dropdown-ins{width:920px}
+.di-list{margin-bottom:20px}
+.di-card{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid #f0f0f0;text-decoration:none}
+.di-card:last-child{border-bottom:none}
+.di-thumb-wrap{width:120px;min-width:120px;height:100px;overflow:hidden;border-radius:8px;flex-shrink:0}
+.di-thumb{width:100%;height:100%;object-fit:cover;display:block;will-change:transform;transition:filter 0.2s}
+.di-card:hover .di-thumb{filter:brightness(1.1)}
+.di-content{flex:1;padding-top:2px}
+.di-label{font-family:'Glacial Indifference',sans-serif;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;font-weight:700;margin-bottom:6px;display:block}
+.di-title{font-family:'Glacial Indifference',sans-serif;font-size:0.95rem;font-weight:600;color:#0E0D0D;margin:0 0 8px;line-height:1.3;transition:color 0.15s}
+.di-card:hover .di-title{color:#0077FE}
+.di-desc{font-family:'Glacial Indifference',sans-serif;font-size:0.82rem;color:#888;line-height:1.55;margin:0}
+
+/* ── HERO ── */
+.work-hero{
+  padding:64px 80px 100px;
+  background:var(--cream);
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:end;
+  position:relative;overflow:hidden;
+}
+.work-hero::before{
+  content:'';position:absolute;
+  top:-200px;right:-100px;width:700px;height:700px;
+  background:radial-gradient(ellipse,rgba(0,195,255,0.12) 0%,transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+.work-hero-left{}
+.work-hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--cobalt);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.work-hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--cobalt)}
+.work-hero h1{font-family:'Bebas Neue',cursive;font-size:clamp(80px,12vw,160px);line-height:0.88;letter-spacing:0.01em;color:var(--text)}
+.work-hero h1 span{background:linear-gradient(135deg,var(--coral),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.work-hero-right{padding-bottom:16px}
+.work-hero-sub{font-size:18px;font-weight:300;line-height:1.7;color:var(--muted);max-width:420px;margin-bottom:32px}
+.work-hero-sub strong{color:var(--text);font-weight:500}
+/* count pills */
+.work-count-row{display:flex;gap:16px;flex-wrap:wrap}
+.count-pill{
+  padding:12px 24px;border-radius:100px;
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+}
+.count-pill.blue{background:rgba(0,119,255,0.1);color:var(--cobalt)}
+.count-pill.sky{background:rgba(0,195,255,0.1);color:#0088bb}
+.count-pill.coral{background:rgba(254,114,53,0.1);color:var(--coral)}
+/* stripe */
+.hero-stripe{height:4px;background:linear-gradient(90deg,var(--cobalt),var(--sky),var(--coral),var(--amber));width:100%}
+
+/* ── FILTER ── */
+.filter-bar{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:36px 60px;background:var(--white);
+  border-bottom:1px solid rgba(0,0,0,0.06);flex-wrap:wrap;
+}
+.filter-btn{
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:8px 22px;border-radius:100px;border:1.5px solid rgba(0,0,0,0.1);
+  cursor:pointer;background:transparent;color:var(--muted);transition:all 0.25s;
+}
+.filter-btn:hover{border-color:var(--cobalt);color:var(--cobalt)}
+.filter-btn.active{background:linear-gradient(135deg,var(--cobalt),var(--sky));color:#fff;border-color:transparent}
+
+/* ── CASE CARDS — OPTION C ALTERNATING ── */
+.cases-list{background:var(--cream)}
+
+.case-row{
+  position:relative;
+  height:620px;overflow:hidden;
+  cursor:pointer;
+}
+.case-row:hover .case-img{transform:scale(1.04)}
+.case-row:hover .case-img-bw{opacity:0}
+.case-row:hover .case-img-colour{opacity:1}
+
+/* images */
+.case-img-wrap{position:absolute;inset:0;z-index:0}
+.case-img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  position:absolute;inset:0;
+  transition:transform 0.8s cubic-bezier(0.22,1,0.36,1);
+}
+.case-img-bw{filter:grayscale(100%) brightness(0.75);opacity:1;transition:opacity 0.7s ease,transform 0.8s cubic-bezier(0.22,1,0.36,1)}
+.case-img-colour{filter:brightness(0.8);opacity:0;transition:opacity 0.7s ease,transform 0.8s cubic-bezier(0.22,1,0.36,1)}
+/* placeholder when no image */
+.case-img-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:12px;
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:0.15em;text-transform:uppercase;
+}
+
+/* gradient overlay — direction flips per card */
+.case-overlay{position:absolute;inset:0;z-index:2}
+.case-row.left-card .case-overlay{
+  background:linear-gradient(90deg,
+    rgba(13,13,20,0.0) 30%,
+    rgba(13,13,20,0.65) 55%,
+    rgba(13,13,20,0.96) 100%
+  );
+}
+.case-row.right-card .case-overlay{
+  background:linear-gradient(270deg,
+    rgba(13,13,20,0.0) 30%,
+    rgba(13,13,20,0.65) 55%,
+    rgba(13,13,20,0.96) 100%
+  );
+}
+
+/* content panel */
+.case-content{
+  position:absolute;z-index:3;top:0;bottom:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:64px 72px;max-width:560px;
+}
+.case-row.left-card .case-content{right:0;left:auto}
+.case-row.right-card .case-content{left:0}
+
+.case-num{
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);
+  margin-bottom:16px;
+}
+.case-tag{
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.case-title{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(38px,4.5vw,58px);
+  line-height:1.0;color:#fff;
+  margin-bottom:14px;
+  transition:letter-spacing 0.4s;
+}
+.case-row:hover .case-title{letter-spacing:0.02em}
+.case-desc{
+  font-size:14px;font-weight:300;line-height:1.7;
+  color:rgba(255,255,255,0.55);
+  margin-bottom:24px;max-width:400px;
+}
+.case-stats-row{display:flex;gap:28px;margin-bottom:28px}
+.cs-num{font-family:'Bebas Neue',cursive;font-size:32px;line-height:1}
+.cs-lbl{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:3px}
+.case-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;
+  letter-spacing:0.12em;text-transform:uppercase;
+  padding:12px 28px;border-radius:100px;
+  background:rgba(255,255,255,0.1);color:#fff;
+  border:1px solid rgba(255,255,255,0.2);
+  backdrop-filter:blur(8px);
+  width:fit-content;
+  transition:background 0.25s,border-color 0.25s;
+}
+.case-row:hover .case-cta{background:rgba(0,119,255,0.4);border-color:rgba(0,195,255,0.5)}
+.case-cta::after{content:'→';color:var(--sky)}
+
+/* thin separator between rows */
+.case-row + .case-row{margin-top:3px}
+
+/* ── MODAL ── */
+#work-modal{
+  display:none;position:fixed;inset:0;z-index:500;
+  align-items:flex-start;justify-content:center;
+  padding:40px 20px;
+}
+#work-modal.open{display:flex}
+#modal-bd{
+  position:fixed;inset:0;
+  background:rgba(248,247,244,0.7);
+  backdrop-filter:blur(12px);
+  z-index:0;
+}
+#modal-panel{
+  position:relative;z-index:2;
+  background:#fff;
+  border-radius:24px;
+  width:100%;max-width:860px;
+  margin:auto;
+  overflow:hidden;
+  box-shadow:0 0 0 1px rgba(0,0,0,0.06),
+             0 40px 100px rgba(0,0,0,0.15),
+             0 0 60px rgba(0,119,255,0.08);
+  transform:translateY(40px) scale(0.97);opacity:0;
+  transition:transform 0.5s cubic-bezier(0.22,1,0.36,1),opacity 0.4s ease;
+  max-height:88vh;overflow-y:auto;
+}
+#work-modal.open #modal-panel{transform:translateY(0) scale(1);opacity:1}
+
+/* glowing sides on modal */
+#modal-panel::before{
+  content:'';position:fixed;
+  top:0;left:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--cobalt),var(--sky));
+  border-radius:24px 0 0 24px;
+  pointer-events:none;z-index:10;
+  box-shadow:0 0 30px rgba(0,119,255,0.5);
+}
+#modal-panel::after{
+  content:'';position:fixed;
+  top:0;right:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--coral),var(--amber));
+  border-radius:0 24px 24px 0;
+  pointer-events:none;z-index:10;
+  box-shadow:0 0 30px rgba(254,114,53,0.4);
+}
+
+.modal-hero-img{
+  width:100%;height:320px;position:relative;overflow:hidden;
+}
+.modal-hero-img img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(20%) brightness(0.85);
+}
+.modal-hero-img-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+.modal-hero-gradient{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 40%,#fff 100%);
+}
+.modal-close{
+  position:absolute;top:20px;right:20px;z-index:10;
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,0.9);border:none;cursor:pointer;
+  color:var(--text);font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.2s;
+  box-shadow:0 2px 12px rgba(0,0,0,0.15);
+}
+.modal-close:hover{background:#fff}
+
+.modal-body{padding:0 48px 48px}
+.modal-tag-line{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px}
+.modal-title{font-family:'Bebas Neue',cursive;font-size:clamp(36px,5vw,60px);line-height:1;color:var(--text);margin-bottom:6px}
+.modal-client-line{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:36px}
+
+.modal-stats{
+  display:flex;gap:0;
+  border:1.5px solid rgba(0,0,0,0.07);border-radius:16px;
+  overflow:hidden;margin-bottom:40px;
+}
+.ms{flex:1;padding:24px;text-align:center;border-right:1.5px solid rgba(0,0,0,0.07)}
+.ms:last-child{border-right:none}
+.ms-n{font-family:'Bebas Neue',cursive;font-size:40px;line-height:1;margin-bottom:4px}
+.ms-l{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted)}
+
+.modal-two{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:36px}
+.modal-section-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--cobalt);margin-bottom:12px}
+.modal-section-h{font-family:'Bebas Neue',cursive;font-size:26px;line-height:1.1;color:var(--text);margin-bottom:10px}
+.modal-section-p{font-size:14px;font-weight:300;line-height:1.8;color:var(--muted)}
+.modal-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.mtag{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;background:rgba(0,119,255,0.08);color:var(--cobalt)}
+.modal-service-pill{display:inline-block;padding:10px 24px;border-radius:100px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-top:8px}
+
+/* ── FOOTER ── */
+.work-footer{
+  background:var(--white);padding:100px 80px;text-align:center;
+  border-top:1px solid rgba(0,0,0,0.06);
+  position:relative;overflow:hidden;
+}
+.work-footer::before{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(0,195,255,0.1) 0%,transparent 65%);border-radius:50%;pointer-events:none}
+.work-footer h2{font-family:'Bebas Neue',cursive;font-size:clamp(48px,8vw,100px);line-height:0.95;color:var(--text);margin-bottom:20px}
+.work-footer h2 span{background:linear-gradient(135deg,var(--cobalt),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.work-footer p{font-size:17px;font-weight:300;color:var(--muted);max-width:460px;margin:0 auto 36px}
+.btn-primary{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;background:linear-gradient(135deg,var(--cobalt),var(--sky));padding:16px 40px;text-decoration:none;border-radius:100px;display:inline-block;transition:opacity 0.2s,transform 0.2s}
+.btn-primary:hover{opacity:0.88;transform:translateY(-2px)}
+
+/* mobile */
+@media(max-width:768px){
+  .site-nav{width:calc(100% - 24px);top:12px;padding:0 8px 0 20px}
+  .nav-links{display:none}
+  .work-hero{grid-template-columns:1fr;padding:48px 24px 60px;gap:32px}
+  .case-row{height:500px}
+  .case-content{padding:36px 28px;max-width:100%}
+  .case-row.left-card .case-content,.case-row.right-card .case-content{left:0;right:0}
+  .case-row.left-card .case-overlay{background:linear-gradient(to top,rgba(13,13,20,0.95) 0%,rgba(13,13,20,0.5) 50%,rgba(13,13,20,0.15) 100%)}
+  .case-row.right-card .case-overlay{background:linear-gradient(to top,rgba(13,13,20,0.95) 0%,rgba(13,13,20,0.5) 50%,rgba(13,13,20,0.15) 100%)}
+  .case-content{justify-content:flex-end}
+  .modal-two{grid-template-columns:1fr}
+  .modal-body{padding:0 24px 36px}
+  .modal-stats{flex-wrap:wrap}
+  .ms{min-width:50%}
+  .modal-hero-img{height:220px}
+  .work-footer{padding:80px 24px}
+  .filter-bar{padding:24px}
+}
+
+/* ── WORK HERO ANIMATIONS ── */
+.work-hero-eyebrow {
+  opacity:0; transform:translateY(20px);
+  animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
+}
+.work-hero h1 { opacity:1; }
+.work-hero-sub {
+  opacity:0; transform:translateY(20px);
+  animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
+}
+.work-count-row {
+  opacity:0; transform:translateY(16px);
+  animation: heroFadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.65s forwards;
+}
+@keyframes heroFadeUp {
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* pill entrance stagger */
+.count-pill {
+  opacity:0; transform:translateY(12px) scale(0.95);
+  animation: pillPop 0.6s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.count-pill:nth-child(1) { animation-delay: 0.7s; }
+.count-pill:nth-child(2) { animation-delay: 0.82s; }
+.count-pill:nth-child(3) { animation-delay: 0.94s; }
+@keyframes pillPop {
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
+
+/* hero stripe slides in */
+.hero-stripe {
+  transform:scaleX(0); transform-origin:left;
+  animation: stripeIn 1s cubic-bezier(0.22,1,0.36,1) 0.8s forwards;
+}
+@keyframes stripeIn {
+  to { transform:scaleX(1); }
+}
+
+/* case rows slide up on scroll */
+.case-row {
+  opacity:0; transform:translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+              transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.case-row.visible {
+  opacity:1; transform:translateY(0);
+}
+
+
+.hero-word-char{display:inline-block;opacity:0;transform:translateY(36px) rotate(2deg);transition:opacity 0.5s cubic-bezier(0.22,1,0.36,1),transform 0.5s cubic-bezier(0.22,1,0.36,1)}
+.hero-word-char.vis{opacity:1;transform:translateY(0) rotate(0deg)}
+
+
+/* ── SPECTRUM BAR SHIMMER ── */
+.spectrum-bar{position:relative;overflow:hidden}
+.spectrum-bar::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.55) 50%,transparent 100%);
+  transform:translateX(-100%);
+  animation:spectrumShimmer 4s ease-in-out infinite;
+}
+@keyframes spectrumShimmer{0%,100%{transform:translateX(-100%)}60%{transform:translateX(100%)}}
+
+/* ── CARD TILT ── */
+.case-row{transform-style:preserve-3d;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
+</style>
+<style>
+
+/* ── CASE STUDY PAGE ── */
+.cs-hero{position:relative;height:56vh;min-height:420px;max-height:620px;overflow:hidden;background:var(--dark)}
+.cs-hero img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(0.62)}
+.cs-hero-gradient{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,13,20,0.2) 0%,rgba(13,13,20,0.55) 65%,var(--cream) 100%)}
+.cs-hero-content{position:absolute;left:0;right:0;bottom:0;padding:0 80px 56px;max-width:900px}
+.cs-breadcrumb{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:18px}
+.cs-breadcrumb a{color:rgba(255,255,255,0.55);text-decoration:none}
+.cs-breadcrumb a:hover{color:#fff}
+.cs-num{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:14px}
+.cs-tag{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:16px}
+.cs-h1{font-family:'Bebas Neue',cursive;font-size:clamp(40px,6.5vw,88px);line-height:0.98;color:#fff;margin-bottom:14px}
+.cs-client{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.7)}
+
+.cs-body{max-width:1000px;margin:0 auto;padding:72px 80px 40px}
+.cs-section-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--cobalt);margin-bottom:14px}
+.cs-section-h{font-family:'Bebas Neue',cursive;font-size:clamp(28px,3.5vw,40px);line-height:1.05;color:var(--text);margin-bottom:16px}
+.cs-section-p{font-size:17px;font-weight:300;line-height:1.85;color:var(--muted);max-width:760px}
+.cs-section{margin-bottom:56px}
+.cs-two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+
+.cs-stats{display:flex;gap:0;border:1.5px solid rgba(0,0,0,0.08);border-radius:16px;overflow:hidden;margin:16px 0 8px}
+.cs-stat{flex:1;padding:28px 20px;text-align:center;border-right:1.5px solid rgba(0,0,0,0.08)}
+.cs-stat:last-child{border-right:none}
+.cs-stat-n{font-family:'Bebas Neue',cursive;font-size:44px;line-height:1;margin-bottom:6px}
+.cs-stat-l{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+
+.cs-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.cs-svc-pill{display:inline-block;padding:10px 24px;border-radius:100px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-top:8px}
+
+.cs-nav-footer{display:flex;justify-content:space-between;align-items:center;max-width:1000px;margin:0 auto;padding:40px 80px 0;border-top:1px solid rgba(0,0,0,0.06)}
+.cs-back-link{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--cobalt);text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding-top:32px}
+.cs-back-link:hover{opacity:0.75}
+
+@media(max-width:768px){
+  .cs-hero{height:48vh;min-height:360px}
+  .cs-hero-content{padding:0 24px 40px}
+  .cs-body{padding:48px 24px 24px}
+  .cs-two{grid-template-columns:1fr;gap:32px}
+  .cs-stats{flex-wrap:wrap}
+  .cs-stat{min-width:50%}
+  .cs-nav-footer{padding:32px 24px 0}
+}
+
+</style>
+<script>
+/* Modal functions — defined early */
+function openModal(tab) {
+  const modal = document.getElementById('contact-modal');
+  const panel = document.getElementById('modal-panel');
+  if (!modal || !panel) return;
+  modal.style.display = 'flex';
+  switchTab(tab === 'form' ? 'form' : 'cal');
+  document.body.style.overflow = 'hidden';
+  // force reflow then animate
+  panel.style.transition = 'none';
+  panel.style.transform = 'translateY(32px)';
+  panel.style.opacity = '0';
+  panel.offsetHeight; // force reflow
+  panel.style.transition = 'transform 0.45s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease';
+  panel.style.transform = 'translateY(0)';
+  panel.style.opacity = '1';
+}
+function closeModal() {
+  const modal = document.getElementById('contact-modal');
+  const panel = document.getElementById('modal-panel');
+  if (!modal || !panel) return;
+  panel.style.transform = 'translateY(32px)';
+  panel.style.opacity = '0';
+  document.body.style.overflow = '';
+  setTimeout(() => { modal.style.display = 'none'; }, 400);
+}
+function switchTab(tab) {
+  const formPane = document.getElementById('pane-form');
+  const calPane  = document.getElementById('pane-cal');
+  const tabForm  = document.getElementById('tab-form');
+  const tabCal   = document.getElementById('tab-cal');
+  if (!formPane) return;
+  if (tab === 'form') {
+    formPane.style.display = 'block'; calPane.style.display = 'none';
+    tabForm.style.color = '#0077FF'; tabForm.style.borderBottomColor = '#0077FF';
+    tabCal.style.color  = '#6b7280'; tabCal.style.borderBottomColor  = 'transparent';
+  } else {
+    formPane.style.display = 'none'; calPane.style.display = 'block';
+    tabForm.style.color = '#6b7280'; tabForm.style.borderBottomColor = 'transparent';
+    tabCal.style.color  = '#0077FF'; tabCal.style.borderBottomColor  = '#0077FF';
+    if (!window._calLoaded) {
+      window._calLoaded = true;
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://assets.calendly.com/assets/external/widget.css';
+      document.head.appendChild(link);
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.onload = () => {
+        const ph = document.getElementById('cal-placeholder');
+        if (ph) ph.style.display = 'none';
+        Calendly.initInlineWidget({
+          url: 'https://calendly.com/catalystinnovate/30min',
+          parentElement: document.getElementById('pane-cal'),
+          prefill: {}, utm: {}
+        });
+      };
+      script.onerror = calFallback;
+      setTimeout(function() {
+        const pane = document.getElementById('pane-cal');
+        if (pane && !pane.querySelector('iframe')) calFallback();
+      }, 10000);
+      document.head.appendChild(script);
+    }
+  }
+}
+function calFallback() {
+  const ph = document.getElementById('cal-placeholder');
+  if (!ph) return;
+  ph.style.display = 'flex';
+  ph.innerHTML = '<div style="font-size:15px;text-align:center;">The calendar did not load.</div>' +
+    '<a href="https://calendly.com/catalystinnovate/30min" target="_blank" rel="noopener" style="font-size:15px;font-weight:600;color:#0077FF;text-decoration:none;">Book directly on Calendly</a>';
+}
+async function submitForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('submit-btn');
+  const success = document.getElementById('form-success');
+  let err = document.getElementById('form-error');
+  if (!err) {
+    err = document.createElement('div');
+    err.id = 'form-error';
+    err.style.cssText = "display:none;text-align:center;margin-top:14px;font-family:'Barlow',sans-serif;font-size:14px;color:#6b7280;";
+    btn.insertAdjacentElement('afterend', err);
+  }
+  err.style.display = 'none';
+  const label = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!res.ok) throw new Error('Formspree ' + res.status);
+    Array.from(form.children).forEach(function(c) { if (c !== success) c.style.display = 'none'; });
+    success.style.display = 'block';
+    form.reset();
+  } catch (ex) {
+    err.textContent = 'Something went wrong sending your message. Please email info@thecatalystinnovation.com directly.';
+    err.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = label;
+  }
+}
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+});
+</script>
+</head>
+<body>
+
+
+<nav class="site-nav">
+  <a href="/index.html" class="nav-logo"><img src="/logo-black.svg" alt="Catalyst" style="height:48px;width:auto;"></a>
+  <ul class="nav-links">
+    <li class="has-dropdown lnk-services">
+      <a href="/#services" class="nav-link">Services <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
+      <div class="dropdown">
+        <div class="svc-cols">
+          <div class="svc-col svc-build">
+            <div class="svc-rule"></div>
+            <span class="svc-label">BUILD</span>
+            <span class="svc-subhead">Organisational Design &amp; Operations</span>
+            <p class="svc-desc">The internal engine. Structure, systems, and operational infrastructure for founder-led businesses ready to scale.</p>
+            <div class="svc-divider"></div>
+            <a href="/build#org-structure" class="svc-link">Org Structure &amp; Team Design</a>
+            <a href="/build#operational-systems" class="svc-link">Operational Systems &amp; SOPs</a>
+            <a href="/build#financial-controls" class="svc-link">Financial Controls</a>
+            <a href="/build#hiring-frameworks" class="svc-link">Hiring Frameworks</a>
+            <a href="/build#fractional-coo" class="svc-link">Fractional COO</a>
+          </div>
+          <div class="svc-col svc-lead">
+            <div class="svc-rule"></div>
+            <span class="svc-label">LEAD</span>
+            <span class="svc-subhead">Leadership &amp; Culture</span>
+            <p class="svc-desc">The human layer. Management frameworks, leadership development, and culture architecture for growing teams.</p>
+            <div class="svc-divider"></div>
+            <a href="/lead#management-frameworks" class="svc-link">Management Frameworks</a>
+            <a href="/lead#leadership-development" class="svc-link">Leadership Development</a>
+            <a href="/lead#culture-design" class="svc-link">Culture Design</a>
+            <a href="/lead#accountability-systems" class="svc-link">Accountability Systems</a>
+            <a href="/lead#executive-advisory" class="svc-link">Executive Advisory</a>
+          </div>
+          <div class="svc-col svc-grow">
+            <div class="svc-rule"></div>
+            <span class="svc-label">GROW</span>
+            <span class="svc-subhead">Marketing &amp; Growth Strategy</span>
+            <p class="svc-desc">The external engine. Brand positioning, go-to-market strategy, and growth systems for ambitious founders.</p>
+            <div class="svc-divider"></div>
+            <a href="/grow#brand-positioning" class="svc-link">Brand Positioning</a>
+            <a href="/grow#go-to-market" class="svc-link">Go-To-Market Strategy</a>
+            <a href="/grow#content-distribution" class="svc-link">Content &amp; Distribution</a>
+            <a href="/grow#growth-architecture" class="svc-link">Growth Architecture</a>
+            <a href="/grow#market-expansion" class="svc-link">Market Expansion</a>
+          </div>
+        </div>
+        <div class="svc-footer">
+          <a href="/#services" class="svc-footer-link">Go to services &#8594;</a>
+        </div>
+      </div>
+    </li>
+    <li class="sep" aria-hidden="true">·</li>
+    <li class="has-dropdown lnk-work">
+      <a href="/work" class="nav-link active">Work <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
+            <div class="dropdown dropdown-work">
+        <div class="dc-grid">
+          <a href="/work.html" class="dc-card">
+            <div class="dc-thumb-wrap"><img loading="lazy" decoding="async" src="/crowd-at-music-concert-in-purple-light-2026-01-09-10-14-00-utc-th.jpg" class="dc-thumb" alt="Grow Church"></div>
+            <div class="dc-card-body">
+              <span class="dc-label dc-label-grow">GROW</span>
+              <div class="dc-title">Grow Church</div>
+              <p class="dc-desc">Brand identity and growth strategy for a fast-scaling faith community</p>
+            </div>
+          </a>
+          <a href="/work.html" class="dc-card">
+            <div class="dc-thumb-wrap"><img loading="lazy" decoding="async" src="/business-meeting-and-financial-analysis-in-office-2026-01-07-00-49-57-utc-th.jpg" class="dc-thumb" alt="FVLN, an audit and accounting firm established in 1954."></div>
+            <div class="dc-card-body">
+              <span class="dc-label dc-label-grow">GROW</span>
+              <div class="dc-title">FVLN</div>
+              <p class="dc-desc">Full rebrand and new corporate identity for an audit and accounting firm established in 1954.</p>
+            </div>
+          </a>
+          <a href="/work.html" class="dc-card">
+            <div class="dc-thumb-wrap"><img loading="lazy" decoding="async" src="/crowds-the-audience-at-a-concert-of-an-oratorium-2026-01-06-08-59-53-utc-th.jpg" class="dc-thumb" alt="New Life Church"></div>
+            <div class="dc-card-body">
+              <span class="dc-label dc-label-build">BUILD</span>
+              <div class="dc-title">New Life Church</div>
+              <p class="dc-desc">Organisational design and communications overhaul</p>
+            </div>
+          </a>
+        </div>
+        <div class="dc-footer">
+          <a href="/work" class="dc-footer-link">See all work &#8594;</a>
+        </div>
+      </div>
+    </li>
+    <li class="sep" aria-hidden="true">·</li>
+    <li class="has-dropdown lnk-ins">
+      <a href="/insights" class="nav-link">Insights <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
+            <div class="dropdown dropdown-ins">
+        <div class="di-list">
+          <a href="/insights" class="di-card">
+            <div class="di-thumb-wrap"><img loading="lazy" decoding="async" src="/kind-leader-executive-manager-share-and-discuss-bu-2026-01-05-23-25-07-utc-th.jpg" class="di-thumb" alt=""></div>
+            <div class="di-content">
+              <span class="di-label" style="color:#FE7234">LEAD</span>
+              <div class="di-title">Why most founder-led businesses stall at the same point</div>
+              <p class="di-desc">The pattern shows up at the same revenue mark, in the same way, for the same reason.</p>
+            </div>
+          </a>
+          <a href="/insights" class="di-card">
+            <div class="di-thumb-wrap"><img loading="lazy" decoding="async" src="/top-view-of-table-with-financial-papers-and-calcul-2026-01-08-22-39-45-utc-th.jpg" class="di-thumb" alt=""></div>
+            <div class="di-content">
+              <span class="di-label" style="color:#0077FE">BUILD</span>
+              <div class="di-title">The structure problem hiding behind every growth plateau</div>
+              <p class="di-desc">Growth doesn&#8217;t stall because the market disappears. It stalls because the business can&#8217;t hold the weight.</p>
+            </div>
+          </a>
+          <a href="/insights" class="di-card">
+            <div class="di-thumb-wrap"><img loading="lazy" decoding="async" src="/business-people-meeting-using-laptop-computer-calc-2026-01-07-00-50-24-utc-th.jpg" class="di-thumb" alt=""></div>
+            <div class="di-content">
+              <span class="di-label" style="color:#FEA835">GROW</span>
+              <div class="di-title">Why positioning work fails without operational depth behind it</div>
+              <p class="di-desc">You can&#8217;t market your way out of an internal problem.</p>
+            </div>
+          </a>
+        </div>
+        <div class="dc-footer">
+          <a href="/insights" class="dc-footer-link">Read all insights &#8594;</a>
+        </div>
+      </div>
+    </li>
+    <li class="sep" aria-hidden="true">·</li>
+    <li class="has-dropdown lnk-about">
+      <a href="/about" class="nav-link">About <svg class="nav-chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-line"></span></a>
+      <div class="dropdown dropdown-about">
+        <a href="/about" class="about-nav-item">
+          <div class="about-nav-title">Who we are</div>
+          <div class="about-nav-sub">The Catalyst story and the people behind it</div>
+        </a>
+        <a href="/about#team" class="about-nav-item">
+          <div class="about-nav-title">The Team</div>
+          <div class="about-nav-sub">Carmen Naidoo and Maryke Fischer</div>
+        </a>
+      </div>
+    </li>
+    <li class="sep" aria-hidden="true">·</li>
+    <li>
+      <a href="/#contact" onclick="if(window.openModal){openModal();return false;}" class="nav-link">Contact</a>
+    </li>
+  </ul>
+  <a href="/#contact" onclick="openModal();return false;" class="nav-cta">Book an intro call</a>
+</nav>
+
+
+
+<!-- HERO -->
+<section class="cs-hero">
+  <!-- Image slot: swap this div for <img loading="eager" src="/work-fvln-hero.jpg" alt="..."> when real visuals are supplied -->
+  <div class="cs-hero-slot" style="width:100%;height:100%;background:linear-gradient(135deg,#061510,#0a2018)"></div>
+  <div class="cs-hero-gradient"></div>
+  <div class="cs-hero-content">
+    <div class="cs-breadcrumb"><a href="/work">Work</a> / Ferreira Venter Laws &amp; Nel</div>
+    <div class="cs-num">02 / 2025</div>
+    <div class="cs-tag" style="color:#2ecc8f">Brand Strategy · Corporate Identity · Website · Social</div>
+    <h1 class="cs-h1">Established 1954. Rebuilt.</h1>
+    <div class="cs-client">Ferreira Venter Laws &amp; Nel · Audit &amp; Accounting · South Africa</div>
+  </div>
+</section>
+
+<div class="cs-body">
+
+  <!-- CONTEXT -->
+  <div class="cs-section">
+    <div class="cs-section-label">Context</div>
+    <p class="cs-section-p">Ferreira Venter Laws &amp; Nel is an audit and accounting firm in Tzaneen, Limpopo, established in 1954. Catalyst's brand research led the firm to commission a full rebrand.</p>
+  </div>
+
+  <!-- THE REAL PROBLEM -->
+  <div class="cs-section">
+    <div class="cs-section-label">The Real Problem</div>
+    <h2 class="cs-section-h">The Problem Behind the Brand.</h2>
+    <p class="cs-section-p">Ferreira Venter Laws &amp; Nel has served clients since 1954, but its visual identity and digital presence had not kept pace with the modern professional landscape.</p>
+  </div>
+
+  <!-- APPROACH -->
+  <div class="cs-section">
+    <div class="cs-section-label">Our Approach</div>
+    <p class="cs-section-p">We rebuilt the brand from the ground up. We audited the existing brand, set new positioning that honours the firm's history and signals forward momentum, and built a new corporate identity. We then carried it through the firm's website and social media presence, which we also overhauled.</p>
+    <div class="cs-tags"><span class="mtag">Brand Audit</span><span class="mtag">Positioning Strategy</span><span class="mtag">Messaging Framework</span><span class="mtag">Corporate Identity</span><span class="mtag">Brand Bible</span><span class="mtag">Voice &amp; Tone Guidelines</span><span class="mtag">Website Overhaul</span><span class="mtag">Social Media and Presence Overhaul</span></div>
+    <div class="cs-svc-pill" style="background:linear-gradient(135deg,#0077FF,#00C3FF)">GROW</div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="cs-section">
+    <div class="cs-section-label">Result</div>
+    <div class="cs-stats"><div class="cs-stat"><div class="cs-stat-n" style="color:#2ecc8f">Est. 1954</div><div class="cs-stat-l">Firm Established</div></div><div class="cs-stat"><div class="cs-stat-n" style="color:#2ecc8f">Full</div><div class="cs-stat-l">Rebrand and Corporate Identity</div></div><div class="cs-stat"><div class="cs-stat-n" style="color:#2ecc8f">Web + Social</div><div class="cs-stat-l">Presence Rebuilt</div></div></div>
+  </div>
+
+</div>
+
+<div class="cs-nav-footer">
+  <a href="/work" class="cs-back-link">← Back to all work</a>
+</div>
+
+<!-- FOOTER -->
+<div class="work-footer" id="contact" style="margin-top:40px">
+  <h2>Ready to be our<br>next <span>success story?</span></h2>
+  <p>Tell us where you are. We'll tell you what we'd do first.</p>
+  <a href="/#contact" onclick="openModal();return false;" class="btn-primary">Book an intro call</a>
+</div>
+
+<div id="nav-overlay"></div>
+<script>
+(function(){
+  var items=document.querySelectorAll('.has-dropdown');
+  var ov=document.getElementById('nav-overlay');
+  var active=null,timer=null;
+  function open(item){
+    if(timer){clearTimeout(timer);timer=null;}
+    if(active&&active!==item)active.classList.remove('open');
+    item.classList.add('open');
+    active=item;
+    if(ov)ov.classList.add('active');
+  }
+  function close(){
+    timer=setTimeout(function(){
+      if(active){active.classList.remove('open');active=null;}
+      if(ov)ov.classList.remove('active');
+    },80);
+  }
+  items.forEach(function(item){
+    var dd=item.querySelector('.dropdown');
+    item.addEventListener('mouseenter',function(){open(item);});
+    item.addEventListener('mouseleave',close);
+    if(dd){
+      dd.addEventListener('mouseenter',function(){if(timer){clearTimeout(timer);timer=null;}});
+      dd.addEventListener('mouseleave',close);
+    }
+  });
+  if(ov)ov.addEventListener('click',function(){
+    if(active){active.classList.remove('open');active=null;}
+    ov.classList.remove('active');
+  });
+})();
+
+/* ── CASE CARD TILT ── */
+(function(){
+  document.querySelectorAll('.case-row').forEach(function(card){
+    card.addEventListener('mousemove',function(e){
+      var r=card.getBoundingClientRect();
+      var x=(e.clientX-r.left)/r.width-0.5;
+      var y=(e.clientY-r.top)/r.height-0.5;
+      card.style.transform='perspective(1200px) rotateX('+(-y*8)+'deg) rotateY('+(x*8)+'deg)';
+    });
+    card.addEventListener('mouseleave',function(){
+      card.style.transform='perspective(1200px) rotateX(0deg) rotateY(0deg)';
+    });
+  });
+})();
+
+</script>
+
+
+<!-- CONTACT MODAL -->
+<div id="contact-modal" style="
+  display:none;
+  position:fixed;inset:0;z-index:9999;
+  align-items:center;justify-content:center;
+  padding:20px;
+  box-sizing:border-box;
+">
+  <!-- backdrop -->
+  <div id="modal-backdrop" onclick="closeModal()" style="
+    position:absolute;inset:0;
+    background:rgba(10,10,20,0.85);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  "></div>
+
+  <!-- modal panel -->
+  <div id="modal-panel" style="
+    position:relative;z-index:2;
+    background:#fff;
+    border-radius:20px;
+    width:100%;max-width:780px;
+    max-height:90vh;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    box-shadow:0 40px 120px rgba(0,0,0,0.4);
+    transform:translateY(32px);opacity:0;
+  ">
+    <!-- top bar -->
+    <div style="
+      display:flex;align-items:center;justify-content:space-between;
+      padding:28px 32px 20px;
+      border-bottom:1px solid #f0f0f0;
+    ">
+      <div>
+        <div style="font-family:'Barlow',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#0077FF;margin-bottom:6px;">Let's Talk</div>
+        <div style="font-family:'Barlow',sans-serif;font-size:22px;font-weight:600;color:#0d0d14;line-height:1.2;letter-spacing:-0.01em;">Start the Conversation</div>
+      </div>
+      <button onclick="closeModal()" style="
+        width:40px;height:40px;border-radius:50%;
+        background:#f4f6f9;border:none;cursor:pointer;
+        display:flex;align-items:center;justify-content:center;
+        font-size:18px;color:#6b7280;
+        transition:background 0.2s;
+      " onmouseover="this.style.background='#e8eaf0'" onmouseout="this.style.background='#f4f6f9'">✕</button>
+    </div>
+
+    <!-- tabs -->
+    <div style="display:flex;border-bottom:1px solid #f0f0f0;">
+      <button id="tab-form" onclick="switchTab('form')" style="
+        flex:1;padding:14px;
+        font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;
+        letter-spacing:0.12em;text-transform:uppercase;
+        border:none;cursor:pointer;
+        background:#fff;color:#0077FF;
+        border-bottom:2px solid #0077FF;
+        transition:all 0.2s;
+      ">Send a Message</button>
+      <button id="tab-cal" onclick="switchTab('cal')" style="
+        flex:1;padding:14px;
+        font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;
+        letter-spacing:0.12em;text-transform:uppercase;
+        border:none;cursor:pointer;
+        background:#fff;color:#6b7280;
+        border-bottom:2px solid transparent;
+        transition:all 0.2s;
+      ">Book a Call</button>
+    </div>
+
+    <!-- form tab -->
+    <div id="pane-form" style="padding:32px;overflow-y:auto;">
+      <form id="contact-form" action="https://formspree.io/f/mzedajbl" method="POST" onsubmit="submitForm(event)">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div>
+            <label style="font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;display:block;margin-bottom:6px;">Name</label>
+            <input type="text" name="name" required placeholder="Your full name" style="
+              width:100%;padding:12px 16px;
+              border:1.5px solid #e8eaf0;border-radius:10px;
+              font-family:'Barlow',sans-serif;font-size:15px;color:#0d0d14;
+              outline:none;transition:border-color 0.2s;background:#fff;
+            " onfocus="this.style.borderColor='#0077FF'" onblur="this.style.borderColor='#e8eaf0'">
+          </div>
+          <div>
+            <label style="font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;display:block;margin-bottom:6px;">Email</label>
+            <input type="email" name="email" required placeholder="your@email.com" style="
+              width:100%;padding:12px 16px;
+              border:1.5px solid #e8eaf0;border-radius:10px;
+              font-family:'Barlow',sans-serif;font-size:15px;color:#0d0d14;
+              outline:none;transition:border-color 0.2s;background:#fff;
+            " onfocus="this.style.borderColor='#0077FF'" onblur="this.style.borderColor='#e8eaf0'">
+          </div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;display:block;margin-bottom:6px;">Company</label>
+          <input type="text" name="company" placeholder="Your company name" style="
+            width:100%;padding:12px 16px;
+            border:1.5px solid #e8eaf0;border-radius:10px;
+            font-family:'Barlow',sans-serif;font-size:15px;color:#0d0d14;font-weight:300;
+            outline:none;transition:border-color 0.2s;background:#fff;
+          " onfocus="this.style.borderColor='#0077FF'" onblur="this.style.borderColor='#e8eaf0'">
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;display:block;margin-bottom:6px;">What are you working on?</label>
+          <select name="service" style="
+            width:100%;padding:12px 16px;
+            border:1.5px solid #e8eaf0;border-radius:10px;
+            font-family:'Barlow',sans-serif;font-size:15px;color:#0d0d14;
+            outline:none;background:#fff;cursor:pointer;
+          ">
+            <option value="">Select a service area</option>
+            <option value="build">BUILD: Organisational Design & Operations</option>
+            <option value="lead">LEAD: Leadership & Culture</option>
+            <option value="grow">GROW: Marketing & Growth Strategy</option>
+            <option value="intensive">The Catalyst Intensive (all three)</option>
+            <option value="unsure">Not sure yet. Let's talk.</option>
+          </select>
+        </div>
+        <div style="margin-bottom:24px;">
+          <label style="font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;display:block;margin-bottom:6px;">Tell us where you are</label>
+          <textarea name="message" required rows="4" placeholder="What's the biggest challenge your business is facing right now?" style="
+            width:100%;padding:12px 16px;
+            border:1.5px solid #e8eaf0;border-radius:10px;
+            font-family:'Barlow',sans-serif;font-size:15px;color:#0d0d14;
+            outline:none;resize:vertical;transition:border-color 0.2s;background:#fff;
+          " onfocus="this.style.borderColor='#0077FF'" onblur="this.style.borderColor='#e8eaf0'"></textarea>
+        </div>
+        <button type="submit" id="submit-btn" style="
+          width:100%;padding:16px;
+          background:linear-gradient(135deg,#0077FF,#00C3FF);
+          color:#fff;border:none;border-radius:100px;cursor:pointer;
+          font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;
+          letter-spacing:0.04em;
+          transition:opacity 0.2s,transform 0.2s;
+        " onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+          Send Message
+        </button>
+        <div style="text-align:center;margin-top:14px;">
+          <a href="mailto:info@thecatalystinnovation.com" style="font-family:'Barlow',sans-serif;font-size:13px;color:#9ca3af;text-decoration:none;">
+            Or email us directly at info@thecatalystinnovation.com
+          </a>
+        </div>
+        <div id="form-success" style="display:none;text-align:center;padding:20px 0;">
+          <div style="font-family:'Bebas Neue',cursive;font-size:32px;color:#0077FF;margin-bottom:8px;">Message Sent.</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:15px;color:#6b7280;">We'll be in touch within 24 hours.</div>
+        </div>
+      </form>
+    </div>
+
+    <!-- calendly tab -->
+    <div id="pane-cal" style="display:none;height:650px;">
+      <div id="cal-placeholder" style="
+        display:flex;align-items:center;justify-content:center;
+        height:100%;flex-direction:column;gap:16px;
+        font-family:'Barlow',sans-serif;color:#6b7280;
+      ">
+        <div style="width:32px;height:32px;border:2px solid #0077FF;border-top-color:transparent;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+        <div style="font-size:14px;">Loading calendar...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes spin { to { transform:rotate(360deg); } }
+#contact-modal.open { display:flex; }
+</style>
+</body>
+</html>
